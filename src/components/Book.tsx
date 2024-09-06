@@ -1,16 +1,25 @@
-import { Book } from "../schema";
+import {Book} from "../schema";
 
-export function BookComponent({ book }: { book: Book }) {
+export function BookComponent({book}: { book: Book }) {
   return (
-    <div className="grid grid-cols-6 text-sm border-r border-b [&>*]:p-2 [&>*]:border-l [&>*]:border-t">
-      <h2>{book.title}</h2>
-      <p className="col-span-3">{book.author}</p>
-      <p>Adventurous: {book.scoreAdventurous}</p>
-      <p>Mysterious: {book.scoreMysterious}</p>
-      <p>Emotional: {book.scoreEmotional}</p>
-      <p>Inspiring: {book.scoreInspiring}</p>
-      <p>Funny: {book.scoreFunny}</p>
-      <p>LightHearted: {book.scoreLightHearted}</p>
+    <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-1">
+        <label htmlFor="title">Title</label>
+        <input type="text" id="title" value={book.title}
+               className="border rounded py-2 px-3"
+               onChange={(event) => {
+                  book.title = event.target.value
+               }}/>
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <label htmlFor="author">Author</label>
+        <input type="text" id="author" value={book.author}
+               className="border rounded py-2 px-3"
+               onChange={(event) => {
+                 book.author = event.target.value
+               }}/>
+      </div>
     </div>
   );
 }
