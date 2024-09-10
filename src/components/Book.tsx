@@ -2,7 +2,7 @@ import {Book} from "../schema";
 
 export function BookComponent({book}: { book: Book }) {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex border p-3 flex-col gap-3">
       <div className="flex flex-col gap-1">
         <label htmlFor="title">Title</label>
         <input type="text" id="title" value={book.title}

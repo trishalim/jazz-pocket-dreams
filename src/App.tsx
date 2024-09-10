@@ -1,39 +1,53 @@
 import { useState } from "react";
-import { Book } from "./schema";
-import { BookComponent } from "./components/Book.tsx";
+import {BookShelf, ListOfBooks} from "./schema";
 import {useAccount, useCoState} from "./main";
 import { ID, Group } from "jazz-tools";
+import {BookShelfComponent} from "./components/BookShelf.tsx";
 
 function App() {
   const { me } = useAccount();
 
-  const [bookId, setBookId] = useState<ID<Book> | undefined>(
-    (window.location.search?.replace("?book=", "") || undefined) as ID<Book> | undefined,
+  const [bookShelfId, setBookShelfId] = useState<ID<BookShelf> | undefined>(
+    (window.location.search?.replace("?bookShelf=", "") || undefined) as ID<BookShelf> | undefined,
   );
-  const book = useCoState(Book, bookId)
+  const bookShelf = useCoState(BookShelf, bookShelfId)
 
-  console.log({book})
+  const [bookShelfName, setBookShelfName] = useState<string>("");
 
-  const createBook = () => {
+  console.log({bookShelf})
+
+  const createBookShelf = () => {
     const group = Group.create({ owner: me });
     group.addMember("everyone", "writer");
 
-    const newBook = Book.create(
+    const newBookShelf = BookShelf.create(
       {
-        title: "Project Hail Mary",
-        author: "Blake Crouch",
+        name: bookShelfName,
+        books: ListOfBooks.create([], { owner: group }),
       },
       { owner: group },
     );
 
-    setBookId(newBook.id);
-    window.history.pushState({}, "", `?book=${newBook.id}`);
+    setBookShelfId(newBookShelf.id);
+    window.history.pushState({}, "", `?bookShelf=${newBookShelf.id}`);
   };
 
-  if (book) {
-    return <BookComponent book={book} />;
+  if (bookShelf && bookShelfId) {
+    return <BookShelfComponent bookShelfId={bookShelfId} />;
   } else {
-    return <button onClick={createBook}>Create Book</button>;
+
+    return (
+      <form action="" onSubmit={createBookShelf} className="grid gap-3">
+        <label className="block" htmlFor="bookShelfName">Book shelf name</label>
+        <input type="text" id="bookShelfName" value={bookShelfName}
+               className="block border rounded py-2 px-3"
+               onChange={(event) => {
+                 setBookShelfName(event.target.value)
+               }}
+              required/>
+        <button className="bg-black text-white p-2 rounded" type="submit" onClick={createBookShelf}>Create book shelf</button>
+      </form>
+    )
   }
 }
 

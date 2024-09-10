@@ -1,4 +1,4 @@
-import { CoMap, co } from "jazz-tools";
+import { CoMap, co, CoList } from "jazz-tools";
 
 export class Book extends CoMap {
   title = co.string;
@@ -9,4 +9,11 @@ export class Book extends CoMap {
   // scoreInspiring? = co.number;
   // scoreFunny? = co.number;
   // scoreLightHearted? = co.number;
+}
+
+export class ListOfBooks extends CoList.Of(co.ref(Book)) {}
+
+export class BookShelf extends CoMap {
+  name = co.string;
+  books = co.ref(ListOfBooks);
 }
