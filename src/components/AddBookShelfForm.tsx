@@ -24,11 +24,7 @@ export function AddBookShelfForm() {
       { owner: me },
     );
 
-    console.log({newBookShelf})
-
     me.root?.bookShelves?.push(newBookShelf);
-
-    console.log('my shelves', me.root?.bookShelves)
   };
 
   return (

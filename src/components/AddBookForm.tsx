@@ -1,12 +1,14 @@
-import {useAccount} from "../main.tsx";
-import {Book} from "../schema.ts";
+import {useAccount, useCoState} from "../main.tsx";
+import {Book, Library} from "../schema.ts";
 import {useState} from "react";
-import {Group} from "jazz-tools";
+import {Group, ID} from "jazz-tools";
 
-export function AddBookForm() {
+export function AddBookForm({libraryId}: {libraryId: ID<Library>}) {
   const { me } = useAccount();
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+
+  const library = useCoState(Library, libraryId);
 
   const createBook = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -14,14 +16,12 @@ export function AddBookForm() {
     const group = Group.create({ owner: me });
     group.addMember("everyone", "writer");
 
-    console.log('creating')
     const book = Book.create(
       {title, author},
       { owner: group },
     );
 
-    me.root?.books?.push(book);
-
+    library?.books?.push(book);
   };
   return (
     <form onSubmit={createBook} className="grid gap-3">

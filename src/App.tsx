@@ -1,31 +1,62 @@
-import {useAccount} from "./main";
+import {useAccount, useCoState} from "./main";
 import {BookShelfComponent} from "./components/BookShelf.tsx";
 import {AddBookShelfForm} from "./components/AddBookShelfForm.tsx";
-import {BookComponent} from "./components/Book.tsx";
-import {AddBookForm} from "./components/AddBookForm.tsx";
+import {useState} from "react";
+import {Group, ID} from "jazz-tools";
+import {Library, ListOfBooks, ListOfBookShelves} from "./schema.ts";
+import {LibraryComponent} from "./components/Library.tsx";
 
 function App() {
-  const { me } = useAccount({
-    root: { bookShelves: [{}], books: [{}] },
-  });
+  const { me } = useAccount();
+  const bookShelves = useCoState(ListOfBookShelves, me.root?._refs.bookShelves?.id, [{books: []}])
 
-  console.log({ me})
-  console.log('book shelves', me?.root?.bookShelves) // bookShelves is undefined here, why?
+  const [libraryId, setLibraryId] = useState<ID<Library> | undefined>(
+    (window.location.search?.replace("?library=", "") || undefined) as ID<Library> | undefined,
+  );
+
+  const [libraryName, setLibrary] = useState<string>("");
+
+  const library = useCoState(Library, libraryId);
+  const createLibrary = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const group = Group.create({ owner: me });
+    group.addMember("everyone", "writer");
+
+    const newLibrary = Library.create(
+      {
+        name: libraryName,
+        books: ListOfBooks.create([], {owner: group}),
+      },
+      {owner: group},
+    );
+
+    setLibraryId(newLibrary.id);
+    window.history.pushState({}, "", `?library=${newLibrary.id}`);
+  };
 
   return (
     <div className="grid gap-12">
-      <div className="grid gap-8">
-        <h1 className="pb-2 border-b font-semibold">Books</h1>
-        <div className="grid grid-cols-3 gap-3">
-          {me?.root?.books?.map((book) => (
-            <BookComponent key={book.id} book={book} />
-          ))}
-        <AddBookForm/>
-        </div>
-      </div>
+      {library && libraryId ?
+        <LibraryComponent libraryId={libraryId}></LibraryComponent> :
+        <form action="" onSubmit={createLibrary} className="grid gap-3">
+          <h2>Create a new library</h2>
+          <label className="sr-only" htmlFor="libraryName">Library name</label>
+          <input type="text" id="libraryName" value={libraryName}
+                 placeholder="Library name"
+                 className="block border rounded py-2 px-3"
+                 onChange={(event) => {
+                   setLibrary(event.target.value)
+                 }}
+                 required/>
+          <button className="bg-black text-white p-2 rounded" type="submit">
+            Create library
+          </button>
+        </form>
+      }
       <div className="grid gap-8">
         <h1 className="pb-2 border-b font-semibold">Book shelves by {me?.profile?.name}</h1>
-        {me?.root?.bookShelves?.map((bookShelf) => (
+        {bookShelves?.map((bookShelf) => (
           <BookShelfComponent key={bookShelf.id} bookShelfId={bookShelf.id}/>
         ))}
         <AddBookShelfForm/>

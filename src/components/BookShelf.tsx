@@ -1,17 +1,10 @@
 import { ID } from "jazz-tools";
-import { BookShelf, Book } from "../schema";
+import { BookShelf } from "../schema";
 import { BookComponent } from "./Book.tsx";
 import { useCoState } from "../main";
 
 export function BookShelfComponent({ bookShelfId }: { bookShelfId: ID<BookShelf> }) {
   const bookShelf = useCoState(BookShelf, bookShelfId);
-
-  const createAndAddBook = () => {
-    bookShelf?.books?.push(Book.create({
-      title: "",
-      author: "",
-    }, { owner: bookShelf._owner }));
-  };
 
   return bookShelf ? (
     <div className="grid gap-3">
