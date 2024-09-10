@@ -1,4 +1,4 @@
-import { CoMap, co, CoList, Account, Profile } from "jazz-tools";
+import {CoMap, co, CoList, Account, Profile, Group} from "jazz-tools";
 
 export class Book extends CoMap {
   title = co.string;
@@ -24,6 +24,7 @@ export class ListOfBookShelves extends CoList.Of(co.ref(BookShelf)) {}
  *  where you can store top-level objects for that user */
 export class AccountRoot extends CoMap {
   bookShelves = co.ref(ListOfBookShelves);
+  books = co.ref(ListOfBooks);
 }
 
 export class JazzAccount extends Account {
@@ -36,6 +37,9 @@ export class JazzAccount extends Account {
   migrate(this: Account, creationProps?: { name: string }) {
     console.log('migrate')
     super.migrate(creationProps);
+    const group = Group.create({ owner: this });
+    group.addMember("everyone", "writer");
+
     if (!this._refs.root) {
       this.root = AccountRoot.create(
         {
@@ -43,6 +47,11 @@ export class JazzAccount extends Account {
             ["Want to read", "Reading", "Read"].map((name) => (
               BookShelf.create({ name, books: ListOfBooks.create([], { owner: this }) }, { owner: this })
             )), { owner: this }),
+          books: ListOfBooks.create([
+            Book.create({ title: "The Great Gatsby", author: "F. Scott Fitzgerald" }, { owner: this }),
+            Book.create({ title: "To Kill a Mockingbird", author: "Harper Lee" }, { owner: this }),
+            Book.create({ title: "Pride and Prejudice", author: "Jane Austen" }, { owner: this }),
+          ], { owner: group }),
         },
         { owner: this },
       );
