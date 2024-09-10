@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { createJazzReactContext, DemoAuth } from "jazz-react";
+import {JazzAccount} from "./schema.ts";
 
-const Jazz = createJazzReactContext({
-  auth: DemoAuth({ appName: "Circular" }),
+const Jazz = createJazzReactContext<JazzAccount>({
+  auth: DemoAuth({ appName: "Books" }),
   peer: "wss://mesh.jazz.tools/?key=you@example.com", // <- put your email here to get a proper API key later
 });
 export const { useAccount, useCoState } = Jazz;
