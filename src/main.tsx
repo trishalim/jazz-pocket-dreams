@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <Jazz.Provider>
     <React.StrictMode>
 
-      <main className="max-w-xl p-8 mx-auto">
+      <main className="max-w-6xl p-8 mx-auto">
         <App/>
       </main>
     </React.StrictMode>

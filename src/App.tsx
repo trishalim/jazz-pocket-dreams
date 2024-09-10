@@ -16,10 +16,12 @@ function App() {
     <div className="grid gap-12">
       <div className="grid gap-8">
         <h1 className="pb-2 border-b font-semibold">Books</h1>
-        {me?.root?.books?.map((book) => (
-          <BookComponent key={book.id} book={book} />
-        ))}
+        <div className="grid grid-cols-3 gap-3">
+          {me?.root?.books?.map((book) => (
+            <BookComponent key={book.id} book={book} />
+          ))}
         <AddBookForm/>
+        </div>
       </div>
       <div className="grid gap-8">
         <h1 className="pb-2 border-b font-semibold">Book shelves by {me?.profile?.name}</h1>

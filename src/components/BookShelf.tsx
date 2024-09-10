@@ -14,11 +14,11 @@ export function BookShelfComponent({ bookShelfId }: { bookShelfId: ID<BookShelf>
   };
 
   return bookShelf ? (
-    <div className="grid gap-3 p-3 border">
+    <div className="grid gap-3">
       <h1 className="font-medium text-xl">{bookShelf.name}</h1>
 
-      <div className="grid gap-3">
-        {!bookShelf.books?.length ? <div>No books yet.</div> : <></>}
+      {!bookShelf.books?.length ? <div>No books yet.</div> : <></>}
+      <div className="grid grid-cols-3 gap-3">
         {bookShelf.books?.map((book) => (
           book && <BookComponent key={book.id} book={book} />
         ))}
