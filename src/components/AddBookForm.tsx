@@ -1,30 +1,22 @@
-import {useAccount} from "../main.tsx";
-import {Book} from "../schema.ts";
+import {useCoState} from "../main.tsx";
+import {Book, BookShelf} from "../schema.ts";
 import {useState} from "react";
-import {Group} from "jazz-tools";
+import {ID} from "jazz-tools";
 
-export function AddBookForm() {
-  const { me } = useAccount();
+export function AddBookForm({ bookShelfId }: { bookShelfId: ID<BookShelf> }) {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+  const bookShelf = useCoState(BookShelf, bookShelfId);
 
-  const createBook = (event: React.FormEvent<HTMLFormElement>) => {
+  const addBook = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const group = Group.create({ owner: me });
-    group.addMember("everyone", "writer");
-
-    console.log('creating')
-    const book = Book.create(
-      {title, author},
-      { owner: group },
-    );
-
-    me.root?.books?.push(book);
-
+    bookShelf?.books?.push(Book.create({
+      title, author
+    }, { owner: bookShelf._owner }));
   };
+
   return (
-    <form onSubmit={createBook} className="grid gap-3">
+    <form onSubmit={addBook} className="grid gap-3">
       <h2>Add a book</h2>
       <label htmlFor="title">Title</label>
       <input type="text" id="title"
