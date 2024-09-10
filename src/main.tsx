@@ -6,7 +6,7 @@ import { createJazzReactContext, DemoAuth } from "jazz-react";
 import {JazzAccount} from "./schema.ts";
 
 const Jazz = createJazzReactContext<JazzAccount>({
-  auth: DemoAuth({ appName: "Books" }),
+  auth: DemoAuth({ appName: "Books", accountSchema: JazzAccount }),
   peer: "wss://mesh.jazz.tools/?key=you@example.com", // <- put your email here to get a proper API key later
 });
 export const { useAccount, useCoState } = Jazz;

@@ -39,7 +39,10 @@ export class JazzAccount extends Account {
     if (!this._refs.root) {
       this.root = AccountRoot.create(
         {
-          bookShelves: ListOfBookShelves.create([], { owner: this }),
+          bookShelves: ListOfBookShelves.create(
+            ["Want to read", "Reading", "Read"].map((name) => (
+              BookShelf.create({ name, books: ListOfBooks.create([], { owner: this }) }, { owner: this })
+            )), { owner: this }),
         },
         { owner: this },
       );

@@ -14,21 +14,17 @@ export function BookShelfComponent({ bookShelfId }: { bookShelfId: ID<BookShelf>
   };
 
   return bookShelf ? (
-    <div className="grid gap-3">
-      <div>
-        <p>Book shelf</p>
-        <h1 className="font-medium text-xl">{bookShelf.name}</h1>
-      </div>
+    <div className="grid gap-3 p-3 border">
+      <h1 className="font-medium text-xl">{bookShelf.name}</h1>
 
       <div className="grid gap-3">
-        <div>Books</div>
+        {!bookShelf.books?.length ? <div>No books yet.</div> : <></>}
         {bookShelf.books?.map((book) => (
           book && <BookComponent key={book.id} book={book} />
         ))}
       </div>
-      <button className="bg-black text-white p-3" onClick={createAndAddBook}>Add book to shelf</button>
     </div>
   ) : (
-    <div>Loading bookShelf...</div>
+    <div>Loading book shelf...</div>
   );
 }
