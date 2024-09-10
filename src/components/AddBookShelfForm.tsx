@@ -4,14 +4,11 @@ import {BookShelf, ListOfBooks} from "../schema.ts";
 import {useAccount} from "../main.tsx";
 
 export function AddBookShelfForm() {
-
   const [bookShelfName, setBookShelfName] = useState<string>("");
   const { me } = useAccount();
 
   const createBookShelf = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    console.log('creating')
 
     const group = Group.create({ owner: me });
     group.addMember("everyone", "writer");

@@ -9,7 +9,6 @@ export function BookComponent({book}: { book: Book }) {
   const bookShelves = me?.root?.bookShelves;
 
   const addToShelf = (shelf: BookShelf) => {
-    console.log('adding to shelf', shelf)
     shelf.books?.push(book);
   };
 

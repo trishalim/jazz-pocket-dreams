@@ -33,7 +33,6 @@ export class JazzAccount extends Account {
    *  You can use it to set up the account root and any other initial CoValues you need.
    */
   migrate(this: Account, creationProps?: { name: string }) {
-    console.log('migrate')
     super.migrate(creationProps);
     const group = Group.create({ owner: this });
     group.addMember("everyone", "writer");
