@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
-import { useAccount } from "@/components/JazzAndAuth";
+import { useAccount } from "jazz-react";
 import RatingInput from "@/components/RatingInput";
 import { BookReview, ListOfBookReviews } from "@/schema";
 import { createImage } from "jazz-browser-media-images";

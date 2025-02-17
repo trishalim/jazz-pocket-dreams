@@ -2,12 +2,11 @@
 
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
-import { useAccount } from "@/components/JazzAndAuth";
 import Link from "next/link";
+import { useAccount } from "jazz-react";
 
 export function Nav() {
-  const { me, logOut } = useAccount();
-
+const { me, logOut } = useAccount();
   return (
     <nav className="border-b py-3">
       <Container className="flex items-center justify-between gap-12 text-sm">
