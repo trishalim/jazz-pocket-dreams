@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/Button";
 import PlusIcon from "@/components/icons/PlusIcon";
 import { BookReview } from "@/schema";

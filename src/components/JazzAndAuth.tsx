@@ -1,7 +1,7 @@
 "use client";
 
-import { ClerkProvider, useClerk } from "@clerk/clerk-react";
 import { JazzAccount } from "@/schema";
+import { ClerkProvider, useClerk } from "@clerk/clerk-react";
 import { JazzProviderWithClerk } from "jazz-react-auth-clerk";
 import { type ReactNode } from "react";
 

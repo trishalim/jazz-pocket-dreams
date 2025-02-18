@@ -1,5 +1,3 @@
-"use client";
-
 import { BookCover } from "@/components/BookCover";
 import { Container } from "@/components/Container";
 import Rating from "@/components/Rating";
@@ -145,8 +143,11 @@ const BookReviewRating = ({
   );
 };
 
-export default function Page({ params }: { params: { slug: string } }) {
-  const bookReview = useCoState(BookReview, params.slug as ID<BookReview>);
+export default async function Page({
+  params,
+}: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const bookReview = useCoState(BookReview, slug as ID<BookReview>);
 
   if (!bookReview) return <></>;
 
