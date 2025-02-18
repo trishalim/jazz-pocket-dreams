@@ -1,14 +1,14 @@
 "use client";
 
-import { JazzAccount } from "@/schema";
 import { ClerkProvider, useClerk } from "@clerk/clerk-react";
+import { JazzAccount } from "@/schema";
 import { JazzProviderWithClerk } from "jazz-react-auth-clerk";
-import { type ReactNode, lazy } from "react";
+import { type ReactNode } from "react";
 
 function JazzAndAuth({ children }: { children: ReactNode }) {
   const clerk = useClerk();
 
-  if (!clerk.loaded) {
+  if (clerk.loaded === false) {
     return null;
   }
 
@@ -16,6 +16,7 @@ function JazzAndAuth({ children }: { children: ReactNode }) {
     <JazzProviderWithClerk
       clerk={clerk}
       sync={{ peer: "wss://cloud.jazz.tools/?key=dashboard@garden.co" }}
+      AccountSchema={JazzAccount}
     >
       {children}
     </JazzProviderWithClerk>
