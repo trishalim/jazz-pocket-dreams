@@ -3,11 +3,23 @@
 import { Container } from "@/components/Container";
 import UserProfile from "@/components/UserProfile";
 import { JazzAccount } from "@/schema";
-import { useAccount } from "jazz-react";
+import {useAccount, useIsAuthenticated} from "jazz-react";
 import { ID } from "jazz-tools";
+import {useClerk} from "@clerk/clerk-react";
+import LandingPage from "@/components/LandingPage";
 
 export default function Home() {
   const { me } = useAccount();
+  const { user, loaded } = useClerk();
+  const isAuthenticated = useIsAuthenticated()
+
+  console.log({
+    user, loaded, isAuthenticated
+  })
+
+  if (!user && loaded) {
+    return <LandingPage/>
+  }
 
   return (
     <Container className="grid gap-12 py-8">

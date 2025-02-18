@@ -10,4 +10,14 @@
   :focus-visible {
     @apply ring-2 ring-purple-600/75 dark:ring-2 dark:ring-white/75;
   }
+
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-indigo-100 via-purple-400 to-indigo-100 bg-clip-text text-transparent;
+  }
+
+  .bg-purple-gradient {
+    /*@apply bg-gradient-to-t from-[#3a2d59] to-[#211f5a] bg-fixed bg-cover;*/
+    @apply bg-gradient-to-b from-purple-950 to-purple-900 bg-fixed bg-cover;
+  }
 }

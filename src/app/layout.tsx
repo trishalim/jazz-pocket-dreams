@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { JazzAndAuth } from "@/components/JazzAndAuth";
+import {Auth} from "@/components/JazzAndAuth";
 import { Nav } from "@/components/Nav";
 import clsx from "clsx";
 import { Fraunces } from "next/font/google";
@@ -27,12 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={clsx(inter.className, fraunces.variable)}>
-        <JazzAndAuth>
+        <Auth>
           <header>
             <Nav />
           </header>
           <main>{children}</main>
-        </JazzAndAuth>
+        </Auth>
       </body>
     </html>
   );

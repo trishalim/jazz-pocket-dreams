@@ -1,25 +1,44 @@
 "use client";
 
 import { JazzAccount } from "@/schema";
-import { DemoAuthBasicUI, JazzProvider, useDemoAuth } from "jazz-react";
+import { ClerkProvider, useClerk } from "@clerk/clerk-react";
+import { JazzProviderWithClerk } from "jazz-react-auth-clerk";
+import { type ReactNode, lazy } from "react";
+
+function JazzAndAuth({ children }: { children: ReactNode }) {
+  const clerk = useClerk();
+
+  if (!clerk.loaded) {
+    return null;
+  }
+
+  return (
+    <JazzProviderWithClerk
+      clerk={clerk}
+      sync={{ peer: "wss://cloud.jazz.tools/?key=dashboard@garden.co" }}
+    >
+      {children}
+    </JazzProviderWithClerk>
+  );
+}
+
+export function Auth({ children }: { children: ReactNode }) {
+  if (!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY) {
+    throw new Error("NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY is not set");
+  }
+
+  return (
+    <ClerkProvider
+      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+      afterSignOutUrl="/"
+    >
+      <JazzAndAuth>{children}</JazzAndAuth>
+    </ClerkProvider>
+  );
+}
 
 declare module "jazz-react" {
   interface Register {
     Account: JazzAccount;
   }
-}
-
-export function JazzAndAuth({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <JazzProvider
-        sync={{
-          peer: `wss://cloud.jazz.tools/?key=$book-shelf-app@example.com`,
-        }}
-        AccountSchema={JazzAccount}
-      >
-        {children}
-      </JazzProvider>
-    </>
-  );
 }
