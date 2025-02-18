@@ -1,9 +1,9 @@
-import {Button} from "@/components/Button";
-import {useClerk} from "@clerk/clerk-react";
+import { Button } from "@/components/Button";
 import LogoIcon from "@/components/icons/LogoIcon";
+import { useClerk } from "@clerk/clerk-react";
 
 export default function LandingPage() {
-  const { redirectToSignIn, redirectToSignUp, } = useClerk();
+  const { redirectToSignIn, redirectToSignUp } = useClerk();
   return (
     <div className="bg-purple-950">
       <div className="bg-[url('/images/stars.svg')]">
