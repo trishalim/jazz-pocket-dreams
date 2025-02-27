@@ -12,10 +12,10 @@
   "dependencies": {
     "@clerk/clerk-react": "^5.22.13",
     "clsx": "^2.1.1",
-    "jazz-browser-media-images": "^0.10.4",
-    "jazz-react": "^0.10.4",
-    "jazz-react-auth-clerk": "^0.10.6",
-    "jazz-tools": "^0.10.4",
+    "jazz-browser-media-images": "^0.10.12",
+    "jazz-react": "^0.10.12",
+    "jazz-react-auth-clerk": "^0.10.12",
+    "jazz-tools": "^0.10.12",
     "next": "15.1.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

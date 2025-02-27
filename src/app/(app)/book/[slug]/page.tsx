@@ -1,3 +1,5 @@
+"use client";
+
 import { BookCover } from "@/components/BookCover";
 import { Container } from "@/components/Container";
 import Rating from "@/components/Rating";
@@ -6,6 +8,7 @@ import { BookReview } from "@/schema";
 import clsx from "clsx";
 import { useCoState } from "jazz-react";
 import { Group, ID } from "jazz-tools";
+import { use } from "react";
 
 const BookReviewTitle = ({
   bookReview,
@@ -143,10 +146,10 @@ const BookReviewRating = ({
   );
 };
 
-export default async function Page({
+export default function Page({
   params,
 }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+  const { slug } = use(params);
   const bookReview = useCoState(BookReview, slug as ID<BookReview>);
 
   if (!bookReview) return <></>;
