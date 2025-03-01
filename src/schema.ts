@@ -14,7 +14,7 @@ export class BookReview extends CoMap {
   dateRead = co.Date;
   review = co.optional.string;
   cover? = co.ref(ImageDefinition, { optional: true });
-  deleted = co.boolean;
+  deleted = co.optional.boolean;
 }
 
 export class ListOfBookReviews extends CoList.Of(co.ref(BookReview)) {

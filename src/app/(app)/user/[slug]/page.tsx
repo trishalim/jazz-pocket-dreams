@@ -3,8 +3,8 @@ import UserProfile from "@/components/UserProfile";
 import { JazzAccount } from "@/schema";
 import { ID } from "jazz-tools";
 
-export default function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
 
   return (
     <Container className="py-8">
