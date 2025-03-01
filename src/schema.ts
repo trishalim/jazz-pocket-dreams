@@ -2,7 +2,6 @@ import {
   Account,
   CoList,
   CoMap,
-  Encoders,
   ImageDefinition,
   Profile,
   co,
@@ -12,12 +11,17 @@ export class BookReview extends CoMap {
   title = co.string;
   author = co.string;
   rating = co.number;
-  dateRead? = co.encoded(Encoders.Date);
-  review? = co.string;
+  dateRead = co.optional.Date;
+  review = co.optional.string;
   cover? = co.ref(ImageDefinition, { optional: true });
+  deleted = co.boolean;
 }
 
-export class ListOfBookReviews extends CoList.Of(co.ref(BookReview)) {}
+export class ListOfBookReviews extends CoList.Of(co.ref(BookReview)) {
+  getAll(this: ListOfBookReviews) {
+    return this.filter((bookReview): bookReview is BookReview => !bookReview?.deleted);
+  }
+}
 
 /** The profile is an app-specific per-user public `CoMap`
  *  where you can store top-level objects for that user */

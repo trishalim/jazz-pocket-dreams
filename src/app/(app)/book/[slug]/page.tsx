@@ -9,6 +9,7 @@ import clsx from "clsx";
 import { useCoState } from "jazz-react";
 import { Group, ID } from "jazz-tools";
 import { use } from "react";
+import {Button} from "@/components/Button";
 
 const BookReviewTitle = ({
   bookReview,
@@ -156,6 +157,10 @@ export default function Page({
 
   const readOnly = !(bookReview._owner.castAs(Group).myRole() === "admin");
 
+  const deleteBook = () => {
+    bookReview.deleted = true;
+  }
+
   return (
     <Container className="grid gap-12 py-8">
       <div className="flex flex-col gap-6 sm:flex-row md:gap-10">
@@ -169,7 +174,14 @@ export default function Page({
           <BookReviewDateRead bookReview={bookReview} readOnly={readOnly} />
           <BookReviewRating bookReview={bookReview} readOnly={readOnly} />
           <BookReviewReview bookReview={bookReview} readOnly={readOnly} />
+          <div className="mt-5 space-y-2">
+            {bookReview?.deleted ?
+              <><p>This review has been deleted.</p> <Button variant="secondary" onClick={() => bookReview.deleted = false}>Restore</Button> </> :
+            <Button onClick={() => bookReview.deleted = true} variant="secondary">Delete</Button>
+            }
+          </div>
         </div>
+
       </div>
     </Container>
   );

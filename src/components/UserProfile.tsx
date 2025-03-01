@@ -30,7 +30,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
-        {bookReviews?.map((bookReview) => (
+        {bookReviews?.getAll().map((bookReview) => (
           <BookReviewThumbnail key={bookReview.id} id={bookReview.id} />
         ))}
       </div>
