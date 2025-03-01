@@ -1,6 +1,7 @@
 "use client";
 
 import { BookCover } from "@/components/BookCover";
+import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import Rating from "@/components/Rating";
 import RatingInput from "@/components/RatingInput";
@@ -9,7 +10,6 @@ import clsx from "clsx";
 import { useCoState } from "jazz-react";
 import { Group, ID } from "jazz-tools";
 import { use } from "react";
-import {Button} from "@/components/Button";
 
 const BookReviewTitle = ({
   bookReview,
@@ -159,7 +159,7 @@ export default function Page({
 
   const deleteBook = () => {
     bookReview.deleted = true;
-  }
+  };
 
   return (
     <Container className="grid gap-12 py-8">
@@ -175,13 +175,26 @@ export default function Page({
           <BookReviewRating bookReview={bookReview} readOnly={readOnly} />
           <BookReviewReview bookReview={bookReview} readOnly={readOnly} />
           <div className="mt-5 space-y-2">
-            {bookReview?.deleted ?
-              <><p>This review has been deleted.</p> <Button variant="secondary" onClick={() => bookReview.deleted = false}>Restore</Button> </> :
-            <Button onClick={() => bookReview.deleted = true} variant="secondary">Delete</Button>
-            }
+            {bookReview?.deleted ? (
+              <>
+                <p>This review has been deleted.</p>{" "}
+                <Button
+                  variant="secondary"
+                  onClick={() => (bookReview.deleted = false)}
+                >
+                  Restore
+                </Button>{" "}
+              </>
+            ) : (
+              <Button
+                onClick={() => (bookReview.deleted = true)}
+                variant="secondary"
+              >
+                Delete
+              </Button>
+            )}
           </div>
         </div>
-
       </div>
     </Container>
   );

@@ -19,7 +19,9 @@ export class BookReview extends CoMap {
 
 export class ListOfBookReviews extends CoList.Of(co.ref(BookReview)) {
   getAll(this: ListOfBookReviews) {
-    return this.filter((bookReview): bookReview is BookReview => !bookReview?.deleted);
+    return this.filter(
+      (bookReview): bookReview is BookReview => !bookReview?.deleted,
+    );
   }
 }
 

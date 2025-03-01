@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Auth } from "@/components/JazzAndAuth";
+import { Nav } from "@/components/Nav";
 import clsx from "clsx";
 import { Fraunces } from "next/font/google";
-import {Nav} from "@/components/Nav";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
