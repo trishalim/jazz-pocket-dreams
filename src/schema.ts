@@ -11,7 +11,7 @@ export class BookReview extends CoMap {
   title = co.string;
   author = co.string;
   rating = co.number;
-  dateRead = co.optional.Date;
+  dateRead = co.Date;
   review = co.optional.string;
   cover? = co.ref(ImageDefinition, { optional: true });
   deleted = co.boolean;
