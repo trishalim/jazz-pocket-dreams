@@ -12,12 +12,24 @@ import { ChangeEvent, useRef } from "react";
 const BookCoverContainer = ({
   children,
   className = "",
+  size = "md",
 }: {
   children: React.ReactNode;
   className?: string;
+  size?: "sm" | "md";
 }) => {
   return (
-    <div className={clsx("h-[240px] lg:h-[260px]", className)}>{children}</div>
+    <div
+      className={clsx(
+        {
+          "h-[240px] lg:h-[260px]": size === "md",
+          "h-[180px]": size === "sm",
+        },
+        className,
+      )}
+    >
+      {children}
+    </div>
   );
 };
 
@@ -33,13 +45,15 @@ const MockCover = ({ bookReview }: { bookReview: BookReview }) => {
 export function BookCoverReadOnly({
   bookReview,
   className,
+  size = "md",
 }: {
   bookReview: BookReview;
   className?: string;
+  size?: "sm" | "md";
 }) {
   if (bookReview.cover) {
     return (
-      <BookCoverContainer className={className}>
+      <BookCoverContainer className={className} size={size}>
         <ProgressiveImg image={bookReview.cover}>
           {({ src }) => (
             <img

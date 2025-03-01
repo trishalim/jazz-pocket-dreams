@@ -118,6 +118,8 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
       <ShareProfileDialog
         open={showShareProfileDialog}
         onClose={() => setShowShareProfileDialog(false)}
+        booksByMonth={booksByMonth}
+        year={selectedYear}
       />
 
       <div>
