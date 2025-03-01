@@ -49,7 +49,10 @@ export function ShareProfileDialog(
       <DialogTitle>Share your profile</DialogTitle>
       <DialogBody>
         <div>
-          <div className="aspect-[9/16] bg-amber-50 w-full flex flex-col justify-center p-8" id="shareImage">
+          <div
+            className="aspect-[9/16] bg-amber-50 w-full flex flex-col justify-center p-8"
+            id="shareImage"
+          >
             <p className="text-center font-serif text-2xl font-semibold mb-8">
               My March reads
             </p>
@@ -67,21 +70,28 @@ export function ShareProfileDialog(
             <Button
               variant="secondary"
               onClick={() => {
-                const element = document.getElementById('shareImage');
+                const element = document.getElementById("shareImage");
                 if (!element) return;
 
-                import('html-to-image').then(({ toPng }) => {
-                  toPng(element)
-                    .then((dataUrl: string) => {
-                      const link = document.createElement('a');
-                      link.download = `${booksThisMonth?.month || 'monthly'}-reads-${year}.png`;
+                import("html-to-image").then(({ toPng }) => {
+                  toPng(element).then((dataUrl: string) => {
+                    // Instagram requires HTTPS URLs, so we need to check if on mobile
+                    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                      // Instagram Story deep link
+                      const instagramURL = `instagram-stories://share?source_image=${encodeURIComponent(dataUrl)}`;
+                      window.location.href = instagramURL;
+                    } else {
+                      // Fallback for desktop - download image
+                      const link = document.createElement("a");
+                      link.download = `${booksThisMonth?.month || "monthly"}-reads-${year}.png`;
                       link.href = dataUrl;
                       link.click();
-                    });
+                    }
+                  });
                 });
               }}
             >
-              Download Image
+              Share to Instagram
             </Button>
           </div>
         </div>

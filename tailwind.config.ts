@@ -20,7 +20,7 @@ const config: Config = {
         amber: {
           50: "#fffcf1",
           ...colors.amber,
-        }
+        },
       },
     },
   },
