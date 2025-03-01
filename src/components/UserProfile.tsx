@@ -8,13 +8,15 @@ import {
   JazzProfile,
   ListOfBookReviews,
 } from "@/schema";
+import clsx from "clsx";
 import { useCoState } from "jazz-react";
 import { Group, ID } from "jazz-tools";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
   const user = useCoState(JazzAccount, id);
   const profile = useCoState(JazzProfile, user?.profile?.id);
+  const [selectedYear, setSelectedYear] = useState(2025);
 
   const bookReviews = useCoState(
     ListOfBookReviews,
@@ -22,8 +24,23 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
     [{}],
   );
 
+  const booksByYear = useMemo(() => {
+    const byYear: Array<{ year: number; books: BookReview[] }> = [];
+
+    bookReviews?.getAll().forEach((bookReview) => {
+      const year = bookReview.dateRead.getFullYear();
+      if (!byYear.find((y) => y.year === year)) {
+        byYear.push({ year, books: [] });
+      }
+      byYear.find((y) => y.year === year)?.books.push(bookReview);
+    });
+
+    return byYear;
+  }, [bookReviews]);
+
   const booksByMonth = useMemo(() => {
-    const currentMonth = new Date().getMonth();
+    if (!booksByYear) return;
+    const date = new Date();
 
     const byMonth: Array<{ month: string; books: BookReview[] }> = [
       { month: "January", books: [] },
@@ -38,15 +55,19 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
       { month: "October", books: [] },
       { month: "November", books: [] },
       { month: "December", books: [] },
-    ].splice(0, currentMonth + 1); // don't show future months
+    ].splice(0, date.getFullYear() == selectedYear ? date.getMonth() + 1 : 12); // don't show future months
 
-    bookReviews?.getAll().forEach((bookReview) => {
+    const booksInYear = booksByYear?.find(({ year, books }) => {
+      return year == selectedYear;
+    });
+
+    booksInYear?.books.forEach((bookReview) => {
       const monthIndex = new Date(bookReview.dateRead).getMonth();
       byMonth[monthIndex].books.push(bookReview);
     });
 
     return byMonth;
-  }, [bookReviews]);
+  }, [booksByYear, selectedYear]);
 
   return (
     <div className="grid gap-4">
@@ -61,7 +82,25 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
         )}
       </div>
 
-      {booksByMonth.map(({ month, books }) => (
+      <div>
+        {booksByYear?.map(({ year }) => (
+          <button
+            type="button"
+            className={clsx(
+              "px-2 py-1 rounded-md text-sm mr-2 hover:text-stone-900",
+              selectedYear == year
+                ? "bg-stone-100 text-stone-900"
+                : "text-stone-600",
+            )}
+            key={year}
+            onClick={() => setSelectedYear(year)}
+          >
+            {year}
+          </button>
+        ))}
+      </div>
+
+      {booksByMonth?.map(({ month, books }) => (
         <div key={month} className="flex flex-col mt-8">
           <h2 className="text-sm pb-2 mb-4 border-b">
             <span className=" font-medium">{month}</span>{" "}
