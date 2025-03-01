@@ -3,7 +3,7 @@ import LogoIcon from "@/components/icons/LogoIcon";
 import { useClerk } from "@clerk/clerk-react";
 
 export default function LandingPage() {
-  const { redirectToSignIn, redirectToSignUp } = useClerk();
+  const { redirectToSignUp } = useClerk();
   return (
     <div className="bg-purple-950">
       <div className="bg-[url('/images/stars.svg')]">
