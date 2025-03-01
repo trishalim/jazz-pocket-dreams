@@ -2,6 +2,7 @@
 
 import { BookReviewThumbnail } from "@/components/BookReviewThumbnail";
 import { Button } from "@/components/Button";
+import { ShareProfileDialog } from "@/components/ShareProfileDialog";
 import {
   BookReview,
   JazzAccount,
@@ -16,7 +17,8 @@ import { useMemo, useState } from "react";
 export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
   const user = useCoState(JazzAccount, id);
   const profile = useCoState(JazzProfile, user?.profile?.id);
-  const [selectedYear, setSelectedYear] = useState(2025);
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [showShareProfileDialog, setShowShareProfileDialog] = useState(false);
 
   const bookReviews = useCoState(
     ListOfBookReviews,
@@ -76,11 +78,24 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
           {profile?.name}&apos;s book shelf
         </h1>
         {profile?._owner.castAs(Group).myRole() === "admin" && (
-          <Button href="/add" variant="primary">
-            Add book
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              variant="secondary"
+              onClick={() => setShowShareProfileDialog(true)}
+            >
+              Share profile
+            </Button>
+            <Button href="/add" variant="primary">
+              Add book
+            </Button>
+          </div>
         )}
       </div>
+
+      <ShareProfileDialog
+        open={showShareProfileDialog}
+        onClose={() => setShowShareProfileDialog(false)}
+      />
 
       <div>
         {booksByYear?.map(({ year }) => (
