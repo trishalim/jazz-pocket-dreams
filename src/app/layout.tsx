@@ -4,6 +4,7 @@ import "./globals.css";
 import { Auth } from "@/components/JazzAndAuth";
 import clsx from "clsx";
 import { Fraunces } from "next/font/google";
+import {Nav} from "@/components/Nav";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -26,7 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={clsx(inter.className, fraunces.variable)}>
-        <Auth>{children}</Auth>
+        <Auth>
+          <header>
+            <Nav />
+          </header>
+          <main>{children}</main>
+        </Auth>
       </body>
     </html>
   );
