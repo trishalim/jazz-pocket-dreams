@@ -17,6 +17,10 @@ const config: Config = {
           ...colors.purple,
           950: "#211f5a",
         },
+        amber: {
+          50: "#fffcf1",
+          ...colors.amber,
+        }
       },
     },
   },
