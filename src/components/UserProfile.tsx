@@ -40,6 +40,10 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
     return byYear;
   }, [bookReviews]);
 
+  const booksBySelectedYear = useMemo(() => {
+    return booksByYear?.find(({ year }) => year === selectedYear);
+  }, [booksByYear, selectedYear]);
+
   const booksByMonth = useMemo(() => {
     if (!booksByYear) return;
     const date = new Date();
@@ -65,11 +69,30 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
 
     booksInYear?.books.forEach((bookReview) => {
       const monthIndex = new Date(bookReview.dateRead).getMonth();
-      byMonth[monthIndex].books.push(bookReview);
+      byMonth[monthIndex]?.books.push(bookReview);
     });
 
     return byMonth;
   }, [booksByYear, selectedYear]);
+
+  const averageRating = useMemo(() => {
+    if (!booksBySelectedYear) return;
+    return (
+      booksBySelectedYear.books.reduce((sum, book) => sum + book.rating, 0) /
+      booksBySelectedYear.books.length
+    );
+  }, [booksBySelectedYear]);
+
+  const booksPerMonth = useMemo(() => {
+    if (!booksBySelectedYear) return;
+    const date = new Date();
+    const numberOfYears =
+      selectedYear < date.getFullYear() ? 12 : date.getMonth() + 1;
+    const booksPerMonthValue = booksBySelectedYear.books.length / numberOfYears;
+    return Number.isInteger(booksPerMonthValue)
+      ? booksPerMonthValue
+      : Number(booksPerMonthValue.toFixed(2));
+  }, [booksBySelectedYear, booksByMonth]);
 
   return (
     <div className="grid gap-4">
@@ -113,6 +136,25 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
             {year}
           </button>
         ))}
+      </div>
+
+      <div className="grid sm:grid-cols-3 gap-8 mt-8">
+        <div className="md:border sm:p-3">
+          <p className="font-semibold text-4xl">
+            {booksBySelectedYear?.books.length}
+          </p>
+          <p className="text-stone-600">books read this year</p>
+        </div>
+
+        <div className="md:border sm:p-3">
+          <p className="font-semibold text-4xl">{averageRating}</p>
+          <p className="text-stone-600">average rating</p>
+        </div>
+
+        <div className="md:border sm:p-3">
+          <p className="font-semibold text-4xl">{booksPerMonth}</p>
+          <p className="text-stone-600">books per month</p>
+        </div>
       </div>
 
       {booksByMonth?.map(({ month, books }) => (
