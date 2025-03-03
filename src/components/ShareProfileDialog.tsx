@@ -121,7 +121,7 @@ export function ShareProfileDialog(
             <ShareButton />
           </div>
           <div
-            className="aspect-[9/16] bg-white w-full flex flex-col justify-center p-8"
+            className="aspect-[9/16] bg-white w-full flex flex-col justify-center p-3 "
             id="shareImage"
           >
             <p className="text-center uppercase font-medium mb-8">
@@ -139,7 +139,7 @@ export function ShareProfileDialog(
                       />
                     )}
                   </ProgressiveImg>
-                  <Rating rating={book.rating} />
+                  <Rating size="sm" rating={book.rating} />
                 </div>
               ))}
             </div>
