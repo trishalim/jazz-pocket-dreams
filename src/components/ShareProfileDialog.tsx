@@ -16,6 +16,11 @@ import { useAccount } from "jazz-react";
 import { useEffect, useMemo, useState } from "react";
 
 export default function ShareButton() {
+  // Check if device is mobile based on user agent
+  const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
+  const mobileRegex = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
+  const isMobile = mobileRegex.test(userAgent.toLowerCase());
+
   const handleShare = async () => {
     const element = document.getElementById("shareImage");
     if (!element) return;
@@ -36,7 +41,7 @@ export default function ShareButton() {
 
         await navigator.share(shareData);
       } else {
-        // Fallback for unsupported browsers - download image
+        // Download image if share API not available
         const link = document.createElement("a");
         link.download = "shared-image.png";
         link.href = dataUrl;
@@ -47,10 +52,35 @@ export default function ShareButton() {
     }
   };
 
+  const handleDownload = async () => {
+    const element = document.getElementById("shareImage");
+    if (!element) return;
+
+    try {
+      const { toPng } = await import("html-to-image");
+      const dataUrl = await toPng(element);
+      
+      // Download image
+      const link = document.createElement("a");
+      link.download = "shared-image.png";
+      link.href = dataUrl;
+      link.click();
+    } catch (error) {
+      console.error("Error downloading:", error);
+    }
+  };
+
   return (
-    <Button variant="secondary" onClick={handleShare}>
-      Share
-    </Button>
+    <div className="flex gap-2">
+      {isMobile && (
+        <Button variant="secondary" onClick={handleShare}>
+          Share
+        </Button>
+      )}
+      <Button variant="secondary" onClick={handleDownload}>
+        Download
+      </Button>
+    </div>
   );
 }
 
