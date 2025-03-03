@@ -8,7 +8,9 @@ import Link from "next/link";
 import { BookReview } from "../schema";
 
 export function BookReviewThumbnail({ id }: { id: ID<BookReview> }) {
-  const bookReview = useCoState(BookReview, id);
+  const bookReview = useCoState(BookReview, id, {
+    cover: {},
+  });
 
   if (!bookReview) return <></>;
 
