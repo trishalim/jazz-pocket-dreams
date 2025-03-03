@@ -170,25 +170,28 @@ export default function Page({
           <BookReviewDateRead bookReview={bookReview} readOnly={readOnly} />
           <BookReviewRating bookReview={bookReview} readOnly={readOnly} />
           <BookReviewReview bookReview={bookReview} readOnly={readOnly} />
+
           <div className="mt-5 space-y-2">
-            {bookReview?.deleted ? (
-              <>
-                <p>This review has been deleted.</p>{" "}
+            {bookReview?.deleted && <p>This review has been deleted.</p>}
+
+            {!readOnly &&
+              (bookReview?.deleted ? (
+                <>
+                  <Button
+                    variant="secondary"
+                    onClick={() => (bookReview.deleted = false)}
+                  >
+                    Restore
+                  </Button>{" "}
+                </>
+              ) : (
                 <Button
+                  onClick={() => (bookReview.deleted = true)}
                   variant="secondary"
-                  onClick={() => (bookReview.deleted = false)}
                 >
-                  Restore
-                </Button>{" "}
-              </>
-            ) : (
-              <Button
-                onClick={() => (bookReview.deleted = true)}
-                variant="secondary"
-              >
-                Delete
-              </Button>
-            )}
+                  Delete
+                </Button>
+              ))}
           </div>
         </div>
       </div>
