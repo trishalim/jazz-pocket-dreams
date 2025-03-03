@@ -12,13 +12,16 @@ import {
 import { Icon } from "@/components/Icon";
 import Rating from "@/components/Rating";
 import { BookReview } from "@/schema";
+import html2canvas from "html2canvas";
 import { useAccount } from "jazz-react";
 import { useEffect, useMemo, useState } from "react";
 
 export default function ShareButton() {
   // Check if device is mobile based on user agent
-  const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
-  const mobileRegex = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
+  const userAgent =
+    navigator.userAgent || navigator.vendor || (window as any).opera;
+  const mobileRegex =
+    /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
   const isMobile = mobileRegex.test(userAgent.toLowerCase());
 
   const handleShare = async () => {
@@ -59,7 +62,7 @@ export default function ShareButton() {
     try {
       const { toPng } = await import("html-to-image");
       const dataUrl = await toPng(element);
-      
+
       // Download image
       const link = document.createElement("a");
       link.download = "shared-image.png";
@@ -113,6 +116,17 @@ export function ShareProfileDialog(
 
   if (!me) return;
 
+  const download = () => {
+    const element = document.getElementById("shareImage");
+    if (!element) return;
+    html2canvas(element).then((canvas) => {
+      const link = document.createElement("a");
+      link.download = `my-reads-${year}-${new Date().getMonth() + 1}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    });
+  };
+
   return (
     <Dialog {...dialogProps}>
       <DialogTitle>Share your profile</DialogTitle>
@@ -136,6 +150,7 @@ export function ShareProfileDialog(
             </div>
           </div>
           <div className="mt-4 flex justify-center">
+            <Button onClick={download}>download</Button>
             <ShareButton />
           </div>
         </div>
