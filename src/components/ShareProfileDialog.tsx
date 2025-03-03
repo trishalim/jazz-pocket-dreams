@@ -15,6 +15,45 @@ import { BookReview } from "@/schema";
 import { useAccount } from "jazz-react";
 import { useEffect, useMemo, useState } from "react";
 
+export default function ShareButton() {
+  const handleShare = async () => {
+    const element = document.getElementById("shareImage");
+    if (!element) return;
+
+    try {
+      const { toPng } = await import("html-to-image");
+      const dataUrl = await toPng(element);
+
+      const blob = await fetch(dataUrl).then((res) => res.blob());
+      const file = new File([blob], "shared-image.png", { type: "image/png" });
+
+      if (navigator.share) {
+        const shareData = {
+          files: [file],
+          title: "Check this out!",
+          text: "Sharing this image from my app!",
+        };
+
+        await navigator.share(shareData);
+      } else {
+        // Fallback for unsupported browsers - download image
+        const link = document.createElement("a");
+        link.download = "shared-image.png";
+        link.href = dataUrl;
+        link.click();
+      }
+    } catch (error) {
+      console.error("Error sharing:", error);
+    }
+  };
+
+  return (
+    <Button variant="secondary" onClick={handleShare}>
+      Share
+    </Button>
+  );
+}
+
 export function ShareProfileDialog(
   props: Omit<DialogProps, "children"> & {
     booksByMonth?: { month: string; books: BookReview[] }[];
@@ -67,32 +106,7 @@ export function ShareProfileDialog(
             </div>
           </div>
           <div className="mt-4 flex justify-center">
-            <Button
-              variant="secondary"
-              onClick={() => {
-                const element = document.getElementById("shareImage");
-                if (!element) return;
-
-                import("html-to-image").then(({ toPng }) => {
-                  toPng(element).then((dataUrl: string) => {
-                    // Instagram requires HTTPS URLs, so we need to check if on mobile
-                    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-                      // Instagram Story deep link
-                      const instagramURL = `instagram-stories://share?source_image=${encodeURIComponent(dataUrl)}`;
-                      window.location.href = instagramURL;
-                    } else {
-                      // Fallback for desktop - download image
-                      const link = document.createElement("a");
-                      link.download = `${booksThisMonth?.month || "monthly"}-reads-${year}.png`;
-                      link.href = dataUrl;
-                      link.click();
-                    }
-                  });
-                });
-              }}
-            >
-              Share to Instagram
-            </Button>
+            <ShareButton />
           </div>
         </div>
 
