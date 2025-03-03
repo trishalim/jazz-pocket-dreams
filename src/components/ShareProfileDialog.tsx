@@ -12,7 +12,7 @@ import { Icon } from "@/components/Icon";
 import Rating from "@/components/Rating";
 import { BookReview } from "@/schema";
 import html2canvas from "html2canvas";
-import { useAccount } from "jazz-react";
+import { ProgressiveImg, useAccount } from "jazz-react";
 import { useEffect, useMemo, useState } from "react";
 
 export default function ShareButton() {
@@ -72,11 +72,11 @@ export default function ShareButton() {
   return (
     <div className="flex gap-2">
       {isMobile && (
-        <Button variant="secondary" onClick={handleShare}>
+        <Button size="sm" variant="secondary" onClick={handleShare}>
           Share
         </Button>
       )}
-      <Button variant="secondary" onClick={handleDownload}>
+      <Button size="sm" variant="secondary" onClick={handleDownload}>
         Download
       </Button>
     </div>
@@ -116,26 +116,33 @@ export function ShareProfileDialog(
     <Dialog {...dialogProps}>
       <DialogTitle>Share your profile</DialogTitle>
       <DialogBody>
-        <div>
+        <div className="border relative">
+          <div className="absolute right-4 top-4">
+            <ShareButton />
+          </div>
           <div
-            className="aspect-[9/16] bg-amber-50 w-full flex flex-col justify-center p-8"
+            className="aspect-[9/16] bg-white w-full flex flex-col justify-center p-8"
             id="shareImage"
           >
-            <p className="text-center font-serif text-2xl font-semibold mb-8">
+            <p className="text-center uppercase font-medium mb-8">
               My March reads
             </p>
 
-            <div className="grid grid-cols-3 gap-4">
+            <div className="flex flex-wrap justify-center gap-y-5">
               {booksThisMonth?.books.map((book) => (
-                <div className="space-y-3" key={book.id}>
-                  <BookCoverReadOnly bookReview={book} size="sm" />
+                <div className="space-y-3 w-1/3 px-3" key={book.id}>
+                  <ProgressiveImg image={book.cover} maxWidth={600}>
+                    {({ src }) => (
+                      <img
+                        className="max-h-full max-w-full rounded-l-sm rounded-r-md shadow-lg"
+                        src={src}
+                      />
+                    )}
+                  </ProgressiveImg>
                   <Rating rating={book.rating} />
                 </div>
               ))}
             </div>
-          </div>
-          <div className="mt-4 flex justify-center">
-            <ShareButton />
           </div>
         </div>
 
