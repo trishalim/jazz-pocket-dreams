@@ -1,7 +1,6 @@
 "use client";
 
 import { BookCoverReadOnly } from "@/components/BookCover";
-import { BookReviewThumbnail } from "@/components/BookReviewThumbnail";
 import { Button } from "@/components/Button";
 import {
   Dialog,
@@ -29,27 +28,31 @@ export default function ShareButton() {
     if (!element) return;
 
     try {
-      const { toPng } = await import("html-to-image");
-      const dataUrl = await toPng(element);
+      html2canvas(element).then((canvas) => {
+        const dataUrl = canvas.toDataURL("image/png");
 
-      const blob = await fetch(dataUrl).then((res) => res.blob());
-      const file = new File([blob], "shared-image.png", { type: "image/png" });
+        if (navigator.share) {
+          // Convert dataUrl to a file
+          fetch(dataUrl)
+            .then((res) => res.blob())
+            .then((blob) => {
+              const file = new File([blob], "pocket-dreams.png", {
+                type: "image/png",
+              });
+              const shareData = {
+                files: [file],
+              };
 
-      if (navigator.share) {
-        const shareData = {
-          files: [file],
-          title: "Check this out!",
-          text: "Sharing this image from my app!",
-        };
-
-        await navigator.share(shareData);
-      } else {
-        // Download image if share API not available
-        const link = document.createElement("a");
-        link.download = "shared-image.png";
-        link.href = dataUrl;
-        link.click();
-      }
+              navigator.share(shareData);
+            });
+        } else {
+          // Download image if share API not available
+          const link = document.createElement("a");
+          link.download = "pocket-dreams.png";
+          link.href = dataUrl;
+          link.click();
+        }
+      });
     } catch (error) {
       console.error("Error sharing:", error);
     }
@@ -58,19 +61,12 @@ export default function ShareButton() {
   const handleDownload = async () => {
     const element = document.getElementById("shareImage");
     if (!element) return;
-
-    try {
-      const { toPng } = await import("html-to-image");
-      const dataUrl = await toPng(element);
-
-      // Download image
+    html2canvas(element).then((canvas) => {
       const link = document.createElement("a");
-      link.download = "shared-image.png";
-      link.href = dataUrl;
+      link.download = "pocket-dreams.png";
+      link.href = canvas.toDataURL("image/png");
       link.click();
-    } catch (error) {
-      console.error("Error downloading:", error);
-    }
+    });
   };
 
   return (
@@ -116,17 +112,6 @@ export function ShareProfileDialog(
 
   if (!me) return;
 
-  const download = () => {
-    const element = document.getElementById("shareImage");
-    if (!element) return;
-    html2canvas(element).then((canvas) => {
-      const link = document.createElement("a");
-      link.download = `my-reads-${year}-${new Date().getMonth() + 1}.png`;
-      link.href = canvas.toDataURL("image/png");
-      link.click();
-    });
-  };
-
   return (
     <Dialog {...dialogProps}>
       <DialogTitle>Share your profile</DialogTitle>
@@ -150,7 +135,6 @@ export function ShareProfileDialog(
             </div>
           </div>
           <div className="mt-4 flex justify-center">
-            <Button onClick={download}>download</Button>
             <ShareButton />
           </div>
         </div>
