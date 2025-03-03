@@ -157,10 +157,6 @@ export default function Page({
 
   const readOnly = !(bookReview._owner.castAs(Group).myRole() === "admin");
 
-  const deleteBook = () => {
-    bookReview.deleted = true;
-  };
-
   return (
     <Container className="grid gap-12 py-8">
       <div className="flex flex-col gap-6 sm:flex-row md:gap-10">
