@@ -115,14 +115,13 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
             "dark:bg-slate-800",
           )}
         >
-          <Button href="/add" variant="primary" size="sm">
+          <Button href="/add" variant="primary" size="sm" className="mr-2">
             Add book
           </Button>
           <Button
             variant="secondary"
             onClick={() => setShowShareProfileDialog(true)}
             size="sm"
-            className="mr-2"
           >
             Share profile
           </Button>

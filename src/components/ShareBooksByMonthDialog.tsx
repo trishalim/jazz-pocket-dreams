@@ -11,8 +11,12 @@ import Rating from "@/components/Rating";
 import { BookReview } from "@/schema";
 import html2canvas from "html2canvas";
 import { ProgressiveImg, useAccount } from "jazz-react";
+import { useState } from "react";
 
 export default function ShareButton() {
+  const [isShareSupported, setIsShareSupported] = useState(() => {
+    return "share" in navigator;
+  });
   // Check if device is mobile based on user agent
   const userAgent =
     navigator.userAgent || navigator.vendor || (window as any).opera;
@@ -28,7 +32,7 @@ export default function ShareButton() {
       html2canvas(element).then((canvas) => {
         const dataUrl = canvas.toDataURL("image/png");
 
-        if (navigator.share) {
+        if (navigator.share && isShareSupported) {
           // Convert dataUrl to a file
           fetch(dataUrl)
             .then((res) => res.blob())
@@ -68,7 +72,7 @@ export default function ShareButton() {
 
   return (
     <div className="flex gap-2">
-      {isMobile && (
+      {isMobile && isShareSupported && (
         <Button size="sm" variant="secondary" onClick={handleShare}>
           Share
         </Button>
