@@ -145,7 +145,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
         <LogoShortIcon className="size-5 text-purple-950" />
       </button>
 
-      <div className="md:flex items-center justify-between">
+      <div className="sm:flex items-center justify-between">
         <h1 className="font-serif text-2xl font-medium text-slate-900 sm:text-4xl dark:text-slate-200">
           {profile?.name}&apos;s book shelf
         </h1>
@@ -238,7 +238,10 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
               <span className=" font-medium text-slate-900 dark:text-slate-200">
                 {month}
               </span>{" "}
-              <span> ({books.length} books)</span>
+              <span>
+                {" "}
+                ({books.length} {books.length === 1 ? "book" : "books"})
+              </span>
             </h2>
 
             {!!books.length && (
