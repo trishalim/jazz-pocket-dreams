@@ -115,6 +115,9 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
             "dark:bg-slate-800",
           )}
         >
+          <Button href="/add" variant="primary" size="sm">
+            Add book
+          </Button>
           <Button
             variant="secondary"
             onClick={() => setShowShareProfileDialog(true)}
@@ -122,9 +125,6 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
             className="mr-2"
           >
             Share profile
-          </Button>
-          <Button href="/add" variant="primary" size="sm">
-            Add book
           </Button>
 
           <button
