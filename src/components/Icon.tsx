@@ -1,9 +1,17 @@
 import { clsx } from "clsx";
-import { CheckIcon, CopyIcon, type LucideIcon } from "lucide-react";
+import {
+  CheckIcon,
+  CopyIcon,
+  ImageIcon,
+  type LucideIcon,
+  ShareIcon,
+} from "lucide-react";
 
 const icons = {
   check: CheckIcon,
   copy: CopyIcon,
+  share: ShareIcon,
+  image: ImageIcon,
 };
 
 // copied from tailwind line height https://tailwindcss.com/docs/font-size

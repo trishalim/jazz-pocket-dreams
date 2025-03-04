@@ -25,18 +25,18 @@ export function Button(props: AnchorProps | ButtonProps) {
   } = props;
 
   const variantClassNames = {
-    base: "inline-flex gap-2 items-center justify-center rounded-full overflow-hidden transition-colors",
+    base: "border inline-flex items-center justify-center rounded-full overflow-hidden transition-colors",
     primary:
-      "bg-purple-300 font-medium text-purple-950 px-4 py-2 rounded-full hover:bg-purple-200",
+      "border-purple-300 bg-purple-300 font-medium text-purple-950 px-4 py-2 rounded-full hover:bg-purple-200 hover:border-purple-300",
     secondary:
-      "rounded-full bg-slate-100 font-medium text-slate-600 hover:bg-slate-200",
+      "rounded-full border border-slate-200 font-medium text-slate-600 hover:bg-slate-200",
     tertiary: "rounded-full bg-white text-purple-950 font-medium",
   };
 
   const sizeClassNames = {
-    sm: "py-1.5 px-3 text-sm",
-    md: "py-2 px-5",
-    lg: "py-2 md:py-2.5 px-6 md:text-lg",
+    sm: "py-1.5 px-3 text-sm gap-1.5",
+    md: "py-2 px-5 gap-2",
+    lg: "py-2 md:py-2.5 px-6 md:text-lg gap-2",
   };
 
   const className = clsx(

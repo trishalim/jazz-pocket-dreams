@@ -2,6 +2,8 @@
 
 import { BookReviewThumbnail } from "@/components/BookReviewThumbnail";
 import { Button } from "@/components/Button";
+import { Icon } from "@/components/Icon";
+import { ShareBooksByMonthDialog } from "@/components/ShareBooksByMonthDialog";
 import { ShareProfileDialog } from "@/components/ShareProfileDialog";
 import {
   BookReview,
@@ -19,6 +21,11 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
   const profile = useCoState(JazzProfile, user?.profile?.id);
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [showShareProfileDialog, setShowShareProfileDialog] = useState(false);
+  const [showShareBooksByMonthDialog, setShowShareBooksByMonthDialog] =
+    useState(false);
+  const [booksByMonthToShare, setBooksByMonthToShare] = useState<
+    { month: string; books: BookReview[] } | undefined
+  >();
 
   const bookReviews = useCoState(
     ListOfBookReviews,
@@ -121,8 +128,15 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
       <ShareProfileDialog
         open={showShareProfileDialog}
         onClose={() => setShowShareProfileDialog(false)}
-        booksByMonth={booksByMonth}
-        year={selectedYear}
+      />
+
+      <ShareBooksByMonthDialog
+        open={showShareBooksByMonthDialog}
+        onClose={() => {
+          setShowShareBooksByMonthDialog(false);
+        }}
+        books={booksByMonthToShare?.books}
+        month={booksByMonthToShare?.month}
       />
 
       <div>
@@ -164,10 +178,26 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
 
       {booksByMonth?.map(({ month, books }) => (
         <div key={month} className="flex flex-col mt-8">
-          <h2 className="text-sm pb-2 mb-4 border-b">
-            <span className=" font-medium">{month}</span>{" "}
-            <span className="text-stone-600"> ({books.length} books)</span>
-          </h2>
+          <div className="flex justify-between  pb-2 mb-4 border-b">
+            <h2 className="text-sm">
+              <span className=" font-medium">{month}</span>{" "}
+              <span className="text-stone-600"> ({books.length} books)</span>
+            </h2>
+
+            {!!books.length && (
+              <Button
+                size="sm"
+                variant="secondary"
+                onClick={() => {
+                  setBooksByMonthToShare({ month, books });
+                  setShowShareBooksByMonthDialog(true);
+                }}
+              >
+                <Icon name="image" size="xs" />
+                Share
+              </Button>
+            )}
+          </div>
           {books.length == 0 ? (
             <p className="text-stone-600">No books read this month.</p>
           ) : (
