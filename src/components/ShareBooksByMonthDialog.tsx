@@ -8,7 +8,9 @@ import {
   DialogTitle,
 } from "@/components/Dialog";
 import Rating from "@/components/Rating";
+import StarIcon from "@/components/icons/StarIcon";
 import { BookReview } from "@/schema";
+import clsx from "clsx";
 import html2canvas from "html2canvas";
 import { ProgressiveImg, useAccount } from "jazz-react";
 import { useState } from "react";
@@ -92,6 +94,7 @@ export function ShareBooksByMonthDialog(
 ) {
   const { me } = useAccount();
   const { books = [], month, open, ...dialogProps } = props;
+
   if (!me) return;
 
   return (
@@ -112,17 +115,31 @@ export function ShareBooksByMonthDialog(
 
             <div className="flex flex-wrap justify-center gap-y-5">
               {books.map((book) => (
-                <div className="space-y-2 w-1/3 px-3" key={book.id}>
+                <div
+                  className={clsx("space-y-2", {
+                    "w-1/2 px-3": [1, 2, 4].includes(books.length),
+                    "w-1/3 px-3": [3, 5, 6].includes(books.length),
+                    "w-1/4 px-1": books.length > 6,
+                  })}
+                  key={book.id}
+                >
                   <ProgressiveImg image={book.cover} maxWidth={600}>
                     {({ src }) => (
-                      <img
-                        alt=""
-                        className="max-h-full max-w-full rounded-l-sm rounded-r-md shadow-lg"
-                        src={src}
-                      />
+                      <div className="relative">
+                        <img
+                          alt=""
+                          className="max-h-full max-w-full rounded-l-sm rounded-r-md shadow-lg"
+                          src={src}
+                        />
+                        {book.rating === 5 && (
+                          <StarIcon className="text-yellow-400 absolute right-0.5 top-0.5" />
+                        )}
+                      </div>
                     )}
                   </ProgressiveImg>
-                  <Rating size="sm" rating={book.rating} />
+                  {books.length <= 6 && (
+                    <Rating size="sm" rating={book.rating} />
+                  )}
                 </div>
               ))}
             </div>

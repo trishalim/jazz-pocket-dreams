@@ -183,10 +183,10 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
             <button
               type="button"
               className={clsx(
-                "px-2 py-1 rounded-md text-sm mr-2 hover:text-stone-900",
+                "px-2 py-1 rounded-md text-sm mr-2 hover:text-slate-900",
                 selectedYear == year
-                  ? "bg-stone-100 text-stone-900"
-                  : "text-stone-600",
+                  ? "bg-slate-100 text-slate-900"
+                  : "text-slate-600",
               )}
               key={year}
               onClick={() => setSelectedYear(year)}
@@ -258,7 +258,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
             )}
           </div>
           {books.length == 0 ? (
-            <p className="text-stone-600">No books read this month.</p>
+            <p className="text-slate-600">No books read this month.</p>
           ) : (
             <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-4">
               {books.map((bookReview) => (
