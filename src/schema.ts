@@ -21,7 +21,11 @@ export class ListOfBookReviews extends CoList.Of(co.ref(BookReview)) {
   getAll(this: ListOfBookReviews) {
     return this.filter(
       (bookReview): bookReview is BookReview => !bookReview?.deleted,
-    );
+    ).sort((a, b) => {
+      const dateA = new Date(a.dateRead);
+      const dateB = new Date(b.dateRead);
+      return dateA.getTime() - dateB.getTime();
+    });
   }
 }
 
