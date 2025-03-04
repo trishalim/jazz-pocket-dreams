@@ -76,15 +76,15 @@ export default function AddBookReview() {
     <Container className="grid max-w-lg gap-8 py-8">
       <h1 className="text-lg font-semibold text-black">Add book review</h1>
       <form action="" className="grid gap-4" onSubmit={onSubmit}>
-        <label className="grid gap-1 text-sm text-gray-600">
+        <label className="grid gap-1 text-sm text-slate-600">
           Cover
           <input type="file" onChange={onImageChange} />
         </label>
 
-        <label className="grid gap-1 text-sm text-gray-600">
+        <label className="grid gap-1 text-sm text-slate-600">
           Title
           <input
-            className="rounded border border-gray-300 px-2 py-1 shadow-sm"
+            className="rounded border border-slate-300 px-2 py-1 shadow-sm"
             type="text"
             value={title}
             required
@@ -92,10 +92,10 @@ export default function AddBookReview() {
           ></input>
         </label>
 
-        <label className="grid gap-1 text-sm text-gray-600">
+        <label className="grid gap-1 text-sm text-slate-600">
           Author
           <input
-            className="rounded border border-gray-300 px-2 py-1 shadow-sm"
+            className="rounded border border-slate-300 px-2 py-1 shadow-sm"
             type="text"
             value={author}
             required
@@ -103,10 +103,10 @@ export default function AddBookReview() {
           ></input>
         </label>
 
-        <label className="grid gap-1 text-sm text-gray-600">
+        <label className="grid gap-1 text-sm text-slate-600">
           Date read
           <input
-            className="rounded border border-gray-300 px-2 py-1 shadow-sm"
+            className="rounded border border-slate-300 px-2 py-1 shadow-sm"
             type="date"
             value={dateRead}
             required
@@ -114,7 +114,7 @@ export default function AddBookReview() {
           />
         </label>
 
-        <div className="grid gap-1 text-sm text-gray-600">
+        <div className="grid gap-1 text-sm text-slate-600">
           Rating
           <RatingInput
             value={rating}
@@ -122,10 +122,10 @@ export default function AddBookReview() {
           />
         </div>
 
-        <label className="grid gap-1 text-sm text-gray-600">
+        <label className="grid gap-1 text-sm text-slate-600">
           Review
           <textarea
-            className="rounded border border-gray-300 px-2 py-1 shadow-sm"
+            className="rounded border border-slate-300 px-2 py-1 shadow-sm"
             value={review}
             onChange={(e) => setReview(e.target.value)}
           ></textarea>

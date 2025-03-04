@@ -35,7 +35,7 @@ const BookCoverContainer = ({
 
 const MockCover = ({ bookReview }: { bookReview: BookReview }) => {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-3 rounded-l-sm rounded-r-md bg-gray-100 px-3 text-center shadow-lg">
+    <div className="flex h-full flex-col items-center justify-center gap-3 rounded-l-sm rounded-r-md bg-slate-100 px-3 text-center shadow-lg">
       <p className="font-medium">{bookReview.title}</p>
       <p className="text-xs">{bookReview.author}</p>
     </div>
@@ -119,9 +119,9 @@ export function BookCoverInput({ bookReview }: { bookReview: BookReview }) {
   }
 
   return (
-    <BookCoverContainer className="flex w-[180px] flex-col justify-center rounded-l-sm rounded-r-md bg-gray-100 p-3 shadow-lg">
+    <BookCoverContainer className="flex w-[180px] flex-col justify-center rounded-l-sm rounded-r-md bg-slate-100 p-3 shadow-lg">
       <button
-        className="flex h-full w-full flex-col items-center justify-center gap-3 text-gray-500 transition-colors hover:text-gray-600"
+        className="flex h-full w-full flex-col items-center justify-center gap-3 text-slate-500 transition-colors hover:text-slate-600"
         type="button"
         onClick={onUploadClick}
       >

@@ -28,11 +28,12 @@ const BookReviewTitle = ({
     <input
       value={bookReview.title}
       placeholder="Book title"
+      onChange={(e) => (bookReview.title = e.target.value)}
       className={clsx(
         className,
-        "w-full rounded border border-transparent px-2 py-1 hover:border-gray-300 hover:shadow-sm",
+        "w-full rounded bg-transparent border border-transparent px-2 py-1 hover:border-slate-300 hover:shadow-sm",
+        "dark:hover:border-slate-800 text-slate-900 dark:text-slate-200",
       )}
-      onChange={(e) => (bookReview.title = e.target.value)}
     ></input>
   );
 };
@@ -44,7 +45,7 @@ const BookReviewAuthor = ({
   bookReview: BookReview;
   readOnly: boolean;
 }) => {
-  const className = "text-gray-700";
+  const className = "text-slate-700";
 
   if (readOnly) {
     return <p className={className}>by {bookReview.author}</p>;
@@ -56,7 +57,8 @@ const BookReviewAuthor = ({
       placeholder="Author"
       className={clsx(
         className,
-        "w-full rounded border border-transparent px-2 py-1 hover:border-gray-300 hover:shadow-sm",
+        "w-full rounded bg-transparent border border-transparent px-2 py-1 hover:border-slate-300 hover:shadow-sm",
+        "dark:hover:border-slate-800 text-slate-900 dark:text-slate-200",
       )}
       onChange={(e) => (bookReview.author = e.target.value)}
     ></input>
@@ -70,7 +72,7 @@ const BookReviewDateRead = ({
   bookReview: BookReview;
   readOnly: boolean;
 }) => {
-  const className = "text-gray-700 max-w-[10rem]";
+  const className = "text-slate-700 max-w-[10rem]";
 
   if (readOnly) {
     return (
@@ -87,7 +89,8 @@ const BookReviewDateRead = ({
       placeholder="Date read"
       className={clsx(
         className,
-        "w-full rounded border border-transparent px-2 py-1 hover:border-gray-300 hover:shadow-sm",
+        "w-full rounded bg-transparent border border-transparent px-2 py-1 hover:border-slate-300 hover:shadow-sm",
+        "dark:hover:border-slate-800 text-slate-900 dark:text-slate-200",
       )}
       onChange={(e) => {
         const date = new Date(e.target.value);
@@ -104,7 +107,7 @@ const BookReviewReview = ({
   bookReview: BookReview;
   readOnly: boolean;
 }) => {
-  const className = "text-sm leading-relaxed text-gray-600";
+  const className = "text-sm leading-relaxed text-slate-600";
 
   if (readOnly) {
     if (bookReview.review) {
@@ -118,7 +121,8 @@ const BookReviewReview = ({
       placeholder="Write your review here..."
       className={clsx(
         className,
-        "w-full rounded border border-transparent px-2 py-1 hover:border-gray-300 hover:shadow-sm",
+        "w-full bg-transparent rounded border border-transparent px-2 py-1 hover:border-slate-200 hover:shadow-sm",
+        "dark:hover:border-slate-800 text-slate-900 dark:text-slate-200",
       )}
       onChange={(e) => (bookReview.review = e.target.value)}
     ></textarea>

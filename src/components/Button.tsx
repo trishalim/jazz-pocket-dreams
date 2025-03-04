@@ -27,9 +27,9 @@ export function Button(props: AnchorProps | ButtonProps) {
   const variantClassNames = {
     base: "border inline-flex items-center justify-center rounded-full overflow-hidden transition-colors",
     primary:
-      "border-purple-300 bg-purple-300 font-medium text-purple-950 rounded-full hover:bg-purple-200 hover:border-purple-300",
+      "border-purple-300 bg-purple-300 font-medium text-purple-950 rounded-full hover:bg-purple-200 hover:border-purple-200",
     secondary:
-      "rounded-full border border-slate-200 font-medium text-slate-600 hover:bg-slate-200",
+      "rounded-full border font-medium text-slate-600 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-slate-800",
     tertiary: "rounded-full bg-white text-purple-950 font-medium",
   };
 

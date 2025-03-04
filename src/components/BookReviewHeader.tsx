@@ -14,7 +14,7 @@ export function BookReviewHeader({ bookReview }: { bookReview: BookReview }) {
           {title}
         </h1>
 
-        <p className="text-gray-500">by {author}</p>
+        <p className="text-slate-500">by {author}</p>
       </div>
 
       {bookReview._owner.castAs(Group).myRole() === "admin" ? (

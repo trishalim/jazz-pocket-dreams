@@ -35,7 +35,7 @@ export function BookReviewThumbnail({ id }: { id: ID<BookReview> }) {
         <Link href={`/book/${bookReview.id}`}>
           <h2 className="mb-1 text-sm font-medium">{bookReview.title}</h2>
         </Link>
-        <div className="mb-2 flex flex-col gap-2 text-sm text-gray-500 sm:flex-row sm:items-center">
+        <div className="mb-2 flex flex-col gap-2 text-sm text-slate-500 sm:flex-row sm:items-center">
           <p>{bookReview.author}</p>
           <div className="flex items-center gap-0.5 text-xs font-semibold leading-none">
             <StarIcon className="-mt-px text-base text-yellow-400" />

@@ -109,7 +109,12 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
   return (
     <div className="grid gap-4">
       {isMobileMenuOpen && (
-        <div className="fixed sm:hidden flex right-2 left-2 bottom-2 rounded-full p-2 border z-50 bg-white ease-in-out duration-300 shadow-md">
+        <div
+          className={clsx(
+            "fixed sm:hidden flex right-2 left-2 bottom-2 rounded-full p-2 border z-50 bg-white ease-in-out duration-300 shadow-md",
+            "dark:bg-slate-800",
+          )}
+        >
           <Button
             variant="secondary"
             onClick={() => setShowShareProfileDialog(true)}
@@ -141,7 +146,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
       </button>
 
       <div className="md:flex items-center justify-between">
-        <h1 className="font-serif text-2xl font-medium sm:text-4xl">
+        <h1 className="font-serif text-2xl font-medium text-slate-900 sm:text-4xl dark:text-slate-200">
           {profile?.name}&apos;s book shelf
         </h1>
         {profile?._owner.castAs(Group).myRole() === "admin" && (
@@ -217,8 +222,10 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
           ].map(({ value, label, icon, iconColor }) => (
             <div key={label} className="flex items-center">
               <Icon name={icon} className={clsx(iconColor, "mr-3")} size="md" />
-              <p className="font-semibold mr-1.5">{value}</p>
-              <p className="text-stone-600">{label}</p>
+              <p className="font-semibold mr-1.5 text-slate-900 dark:text-slate-200">
+                {value}
+              </p>
+              <p>{label}</p>
             </div>
           ))}
         </div>
@@ -228,8 +235,10 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
         <div key={month} className="flex flex-col mt-8">
           <div className="flex justify-between items-center pb-2 mb-4 border-b">
             <h2 className="text-sm">
-              <span className=" font-medium">{month}</span>{" "}
-              <span className="text-stone-600"> ({books.length} books)</span>
+              <span className=" font-medium text-slate-900 dark:text-slate-200">
+                {month}
+              </span>{" "}
+              <span> ({books.length} books)</span>
             </h2>
 
             {!!books.length && (

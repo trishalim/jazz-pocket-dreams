@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 const colors = require("tailwindcss/colors");
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   content: [
@@ -24,6 +25,26 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addBase }) =>
+      addBase({
+        ":root": {
+          "--p-border-color": colors.slate[200],
+          "--p-invert-border-color": colors.slate[800],
+        },
+        "*": {
+          borderColor: "var(--p-border-color)",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          "*": {
+            borderColor: "var(--p-invert-border-color)",
+          },
+        },
+        "*:focus": {
+          outline: "none",
+        },
+      }),
+    ),
+  ],
 };
 export default config;
