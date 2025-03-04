@@ -78,8 +78,11 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
   const averageRating = useMemo(() => {
     if (!booksBySelectedYear) return;
     return (
-      booksBySelectedYear.books.reduce((sum, book) => sum + book.rating, 0) /
-      booksBySelectedYear.books.length
+      Math.round(
+        (booksBySelectedYear.books.reduce((sum, book) => sum + book.rating, 0) /
+          booksBySelectedYear.books.length) *
+          10,
+      ) / 10
     );
   }, [booksBySelectedYear]);
 
