@@ -5,6 +5,7 @@ import { Button } from "@/components/Button";
 import { Icon } from "@/components/Icon";
 import { ShareBooksByMonthDialog } from "@/components/ShareBooksByMonthDialog";
 import { ShareProfileDialog } from "@/components/ShareProfileDialog";
+import { LogoShortIcon } from "@/components/icons/LogoShortIcon";
 import {
   BookReview,
   JazzAccount,
@@ -26,6 +27,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
   const [booksByMonthToShare, setBooksByMonthToShare] = useState<
     { month: string; books: BookReview[] } | undefined
   >();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const bookReviews = useCoState(
     ListOfBookReviews,
@@ -106,12 +108,44 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
 
   return (
     <div className="grid gap-4">
+      {isMobileMenuOpen && (
+        <div className="fixed sm:hidden flex right-2 left-2 bottom-2 rounded-full p-2 border z-50 bg-white ease-in-out duration-300 shadow-md">
+          <Button
+            variant="secondary"
+            onClick={() => setShowShareProfileDialog(true)}
+            size="sm"
+            className="mr-2"
+          >
+            Share profile
+          </Button>
+          <Button href="/add" variant="primary" size="sm">
+            Add book
+          </Button>
+
+          <button
+            className="ml-auto p-2"
+            aria-label="Close"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <Icon name="close" size="xs" className="size-2" />
+          </button>
+        </div>
+      )}
+
+      <button
+        onClick={() => setIsMobileMenuOpen(true)}
+        type="button"
+        className="sm:hidden z-40 bg-purple-300 shadow-lg rounded-full fixed bottom-5 right-5 p-2"
+      >
+        <LogoShortIcon className="size-5 text-purple-950" />
+      </button>
+
       <div className="md:flex items-center justify-between">
         <h1 className="font-serif text-lg font-medium sm:text-2xl">
           {profile?.name}&apos;s book shelf
         </h1>
         {profile?._owner.castAs(Group).myRole() === "admin" && (
-          <div className="flex gap-2">
+          <div className="hidden sm:flex gap-2">
             <Button
               variant="secondary"
               onClick={() => setShowShareProfileDialog(true)}

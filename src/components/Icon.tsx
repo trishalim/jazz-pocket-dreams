@@ -6,12 +6,14 @@ import {
   type LucideIcon,
   ShareIcon,
 } from "lucide-react";
+import { CloseIcon } from "next/dist/client/components/react-dev-overlay/internal/icons/CloseIcon";
 
 const icons = {
   check: CheckIcon,
   copy: CopyIcon,
   share: ShareIcon,
   image: ImageIcon,
+  close: CloseIcon,
 };
 
 // copied from tailwind line height https://tailwindcss.com/docs/font-size
