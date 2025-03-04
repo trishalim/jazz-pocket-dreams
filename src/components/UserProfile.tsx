@@ -1,5 +1,6 @@
 "use client";
 
+import { AddBookDialog } from "@/components/AddBookDialog";
 import { BookReviewThumbnail } from "@/components/BookReviewThumbnail";
 import { Button } from "@/components/Button";
 import {
@@ -30,6 +31,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
   const [showShareProfileDialog, setShowShareProfileDialog] = useState(false);
   const [showShareBooksByMonthDialog, setShowShareBooksByMonthDialog] =
     useState(false);
+  const [showAddBookDialog, setShowAddBookDialog] = useState(false);
   const [booksByMonthToShare, setBooksByMonthToShare] = useState<
     { month: string; books: BookReview[] } | undefined
   >();
@@ -121,7 +123,12 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
             "dark:bg-slate-800",
           )}
         >
-          <Button href="/add" variant="primary" size="sm" className="mr-2">
+          <Button
+            onClick={() => setShowAddBookDialog(true)}
+            variant="primary"
+            size="sm"
+            className="mr-2"
+          >
             Add book
           </Button>
           <Button
@@ -154,7 +161,9 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
           <DropdownItem onClick={() => setShowShareProfileDialog(true)}>
             Share profile
           </DropdownItem>
-          <DropdownItem href="/add">Add book</DropdownItem>
+          <DropdownItem onClick={() => setShowAddBookDialog(true)}>
+            Add book
+          </DropdownItem>
         </DropdownMenu>
       </Dropdown>
 
@@ -170,7 +179,10 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
             >
               Share profile
             </Button>
-            <Button href="/add" variant="primary">
+            <Button
+              onClick={() => setShowAddBookDialog(true)}
+              variant="primary"
+            >
               Add book
             </Button>
           </div>
@@ -189,6 +201,11 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
         }}
         books={booksByMonthToShare?.books}
         month={booksByMonthToShare?.month}
+      />
+
+      <AddBookDialog
+        onClose={() => setShowAddBookDialog(false)}
+        open={showAddBookDialog}
       />
 
       {booksByYear?.length > 1 && (
