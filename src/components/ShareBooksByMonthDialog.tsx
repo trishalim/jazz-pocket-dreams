@@ -68,9 +68,11 @@ export default function ShareButton() {
 
   return (
     <div className="flex gap-2">
-      <Button size="sm" variant="secondary" onClick={handleShare}>
-        Share
-      </Button>
+      {isMobile && (
+        <Button size="sm" variant="secondary" onClick={handleShare}>
+          Share
+        </Button>
+      )}
       <Button size="sm" variant="secondary" onClick={handleDownload}>
         Download
       </Button>
@@ -110,7 +112,6 @@ export function ShareBooksByMonthDialog(
                   <ProgressiveImg image={book.cover} maxWidth={600}>
                     {({ src }) => (
                       <img
-                        alt=""
                         className="max-h-full max-w-full rounded-l-sm rounded-r-md shadow-lg"
                         src={src}
                       />
