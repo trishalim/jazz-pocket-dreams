@@ -106,7 +106,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
 
   return (
     <div className="grid gap-4">
-      <div className="flex items-center justify-between">
+      <div className="md:flex items-center justify-between">
         <h1 className="font-serif text-lg font-medium sm:text-2xl">
           {profile?.name}&apos;s book shelf
         </h1>
@@ -178,7 +178,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
 
       {booksByMonth?.map(({ month, books }) => (
         <div key={month} className="flex flex-col mt-8">
-          <div className="flex justify-between  pb-2 mb-4 border-b">
+          <div className="flex justify-between items-center pb-2 mb-4 border-b">
             <h2 className="text-sm">
               <span className=" font-medium">{month}</span>{" "}
               <span className="text-stone-600"> ({books.length} books)</span>
