@@ -140,9 +140,9 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
       <button
         onClick={() => setIsMobileMenuOpen(true)}
         type="button"
-        className="sm:hidden z-40 bg-purple-300 shadow-lg rounded-full fixed bottom-6 right-6 p-2.5"
+        className="sm:hidden z-40 bg-white ring-1 ring-slate-950/10 shadow-lg rounded-full fixed bottom-6 right-6 p-2.5 dark:bg-slate-800"
       >
-        <LogoShortIcon className="size-6 text-purple-950" />
+        <LogoShortIcon className="size-6 text-purple-600 dark:text-purple-400" />
       </button>
 
       <div className="sm:flex items-center justify-between">

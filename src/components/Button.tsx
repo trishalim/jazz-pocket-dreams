@@ -29,7 +29,7 @@ export function Button(props: AnchorProps | ButtonProps) {
     primary:
       "border-purple-300 bg-purple-300 font-medium text-purple-950 rounded-full hover:bg-purple-200 hover:border-purple-200",
     secondary:
-      "rounded-full border font-medium text-slate-600 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-slate-800",
+      "rounded-full border font-medium text-slate-600 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-slate-800 dark:border-slate-700",
     tertiary: "rounded-full bg-white text-purple-950 font-medium",
   };
 
