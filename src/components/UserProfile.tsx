@@ -141,7 +141,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
       </button>
 
       <div className="md:flex items-center justify-between">
-        <h1 className="font-serif text-lg font-medium sm:text-2xl">
+        <h1 className="font-serif text-2xl font-medium sm:text-4xl">
           {profile?.name}&apos;s book shelf
         </h1>
         {profile?._owner.castAs(Group).myRole() === "admin" && (
