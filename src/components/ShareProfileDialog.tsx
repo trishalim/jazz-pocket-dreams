@@ -36,7 +36,7 @@ export function ShareProfileDialog(props: Omit<DialogProps, "children">) {
         <label className="sr-only">Profile link</label>
         <input
           type="text"
-          className="w-full rounded border p-1"
+          className="w-full rounded border p-1 dark:bg-transparent"
           value={link}
           readOnly
         />

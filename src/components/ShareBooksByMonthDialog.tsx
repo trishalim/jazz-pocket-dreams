@@ -99,7 +99,7 @@ export function ShareBooksByMonthDialog(
             <ShareButton />
           </div>
           <div
-            className="aspect-[9/16] bg-white w-full flex flex-col justify-center p-3 "
+            className="aspect-[9/16] bg-white w-full flex flex-col justify-center p-3 dark:bg-slate-900"
             id="shareImage"
           >
             <p className="text-center uppercase font-medium mb-8">
