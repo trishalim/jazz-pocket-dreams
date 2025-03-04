@@ -199,7 +199,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
       )}
 
       {booksBySelectedYear && (
-        <div className="flex flex-col sm:flex-row gap-y-4 gap-x-10 mt-2">
+        <div className="flex flex-col md:flex-row gap-y-4 gap-x-10 mt-2">
           {[
             {
               value: booksBySelectedYear.books.length,

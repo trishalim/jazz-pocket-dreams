@@ -102,16 +102,17 @@ export function ShareBooksByMonthDialog(
             className="aspect-[9/16] bg-white w-full flex flex-col justify-center p-3 dark:bg-slate-900"
             id="shareImage"
           >
-            <p className="text-center uppercase font-medium mb-8">
+            <p className="text-center uppercase font-medium mb-8 text-slate-900 dark:text-slate-200">
               My {month} reads
             </p>
 
             <div className="flex flex-wrap justify-center gap-y-5">
               {books.map((book) => (
-                <div className="space-y-3 w-1/3 px-3" key={book.id}>
+                <div className="space-y-2 w-1/3 px-3" key={book.id}>
                   <ProgressiveImg image={book.cover} maxWidth={600}>
                     {({ src }) => (
                       <img
+                        alt=""
                         className="max-h-full max-w-full rounded-l-sm rounded-r-md shadow-lg"
                         src={src}
                       />
