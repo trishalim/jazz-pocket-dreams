@@ -2,6 +2,12 @@
 
 import { BookReviewThumbnail } from "@/components/BookReviewThumbnail";
 import { Button } from "@/components/Button";
+import {
+  Dropdown,
+  DropdownButton,
+  DropdownItem,
+  DropdownMenu,
+} from "@/components/Dropdown";
 import { Icon } from "@/components/Icon";
 import { ShareBooksByMonthDialog } from "@/components/ShareBooksByMonthDialog";
 import { ShareProfileDialog } from "@/components/ShareProfileDialog";
@@ -136,13 +142,21 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
         </div>
       )}
 
-      <button
-        onClick={() => setIsMobileMenuOpen(true)}
-        type="button"
-        className="sm:hidden z-40 bg-white ring-1 ring-slate-950/10 shadow-lg rounded-full fixed bottom-6 right-6 p-2.5 dark:bg-slate-800"
-      >
-        <LogoShortIcon className="size-6 text-purple-600 dark:text-purple-400" />
-      </button>
+      <Dropdown>
+        <DropdownButton
+          as="button"
+          className="sm:hidden z-40 bg-white ring-1 ring-slate-950/10 shadow-lg rounded-full fixed bottom-6 right-6 p-2.5 dark:bg-slate-800"
+        >
+          <LogoShortIcon className="size-6 text-purple-600 dark:text-purple-400" />
+        </DropdownButton>
+
+        <DropdownMenu anchor="bottom end">
+          <DropdownItem onClick={() => setShowShareProfileDialog(true)}>
+            Share profile
+          </DropdownItem>
+          <DropdownItem href="/add">Add book</DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
 
       <div className="sm:flex items-center justify-between">
         <h1 className="font-serif text-2xl font-medium text-slate-900 sm:text-4xl dark:text-slate-200">
