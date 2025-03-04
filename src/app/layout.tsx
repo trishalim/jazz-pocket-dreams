@@ -14,9 +14,16 @@ const fraunces = Fraunces({
 
 const inter = Inter({ subsets: ["latin"] });
 
+const title = "pocket dreams";
+const description = "your minimalist virtual book shelf";
+
 export const metadata: Metadata = {
-  title: "Jazz Book Shelf",
-  description: "Jazz Book Shelf",
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+  },
 };
 
 export default function RootLayout({
