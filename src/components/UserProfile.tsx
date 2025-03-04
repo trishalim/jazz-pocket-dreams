@@ -139,23 +139,25 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
         month={booksByMonthToShare?.month}
       />
 
-      <div>
-        {booksByYear?.map(({ year }) => (
-          <button
-            type="button"
-            className={clsx(
-              "px-2 py-1 rounded-md text-sm mr-2 hover:text-stone-900",
-              selectedYear == year
-                ? "bg-stone-100 text-stone-900"
-                : "text-stone-600",
-            )}
-            key={year}
-            onClick={() => setSelectedYear(year)}
-          >
-            {year}
-          </button>
-        ))}
-      </div>
+      {booksByYear?.length > 1 && (
+        <div>
+          {booksByYear?.map(({ year }) => (
+            <button
+              type="button"
+              className={clsx(
+                "px-2 py-1 rounded-md text-sm mr-2 hover:text-stone-900",
+                selectedYear == year
+                  ? "bg-stone-100 text-stone-900"
+                  : "text-stone-600",
+              )}
+              key={year}
+              onClick={() => setSelectedYear(year)}
+            >
+              {year}
+            </button>
+          ))}
+        </div>
+      )}
 
       <div className="grid sm:grid-cols-3 gap-8 mt-8">
         <div className="md:border sm:p-3">
