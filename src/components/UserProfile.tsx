@@ -111,7 +111,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
       {isMobileMenuOpen && (
         <div
           className={clsx(
-            "fixed sm:hidden flex right-2 left-2 bottom-2 rounded-full p-2 border z-50 bg-white ease-in-out duration-300 shadow-md",
+            "fixed sm:hidden flex right-5 left-5 bottom-5 rounded-full p-2 border z-50 bg-white ease-in-out duration-300 shadow-md",
             "dark:bg-slate-800",
           )}
         >
@@ -140,9 +140,9 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
       <button
         onClick={() => setIsMobileMenuOpen(true)}
         type="button"
-        className="sm:hidden z-40 bg-purple-300 shadow-lg rounded-full fixed bottom-4 right-4 p-2"
+        className="sm:hidden z-40 bg-purple-300 shadow-lg rounded-full fixed bottom-6 right-6 p-2.5"
       >
-        <LogoShortIcon className="size-5 text-purple-950" />
+        <LogoShortIcon className="size-6 text-purple-950" />
       </button>
 
       <div className="sm:flex items-center justify-between">
