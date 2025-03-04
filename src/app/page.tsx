@@ -18,7 +18,7 @@ export default function Home() {
   }
 
   return (
-    <Container className="grid gap-12 py-8">
+    <Container className="grid gap-12 py-12">
       <UserProfile id={me?.id as ID<JazzAccount>} />
     </Container>
   );

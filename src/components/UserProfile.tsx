@@ -127,7 +127,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
             aria-label="Close"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            <Icon name="close" size="xs" className="size-2" />
+            <Icon name="close" size="sm" />
           </button>
         </div>
       )}
@@ -135,7 +135,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
       <button
         onClick={() => setIsMobileMenuOpen(true)}
         type="button"
-        className="sm:hidden z-40 bg-purple-300 shadow-lg rounded-full fixed bottom-5 right-5 p-2"
+        className="sm:hidden z-40 bg-purple-300 shadow-lg rounded-full fixed bottom-4 right-4 p-2"
       >
         <LogoShortIcon className="size-5 text-purple-950" />
       </button>
@@ -193,24 +193,36 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
         </div>
       )}
 
-      <div className="grid sm:grid-cols-3 gap-8 mt-8">
-        <div className="md:border sm:p-3">
-          <p className="font-semibold text-4xl">
-            {booksBySelectedYear?.books.length}
-          </p>
-          <p className="text-stone-600">books read this year</p>
+      {booksBySelectedYear && (
+        <div className="flex flex-col sm:flex-row gap-y-4 gap-x-10 mt-2">
+          {[
+            {
+              value: booksBySelectedYear.books.length,
+              label: "books read this year",
+              icon: "book",
+              iconColor: "text-pink-500",
+            },
+            {
+              value: averageRating,
+              label: "average rating",
+              icon: "star",
+              iconColor: "text-amber-400",
+            },
+            {
+              value: booksPerMonth,
+              label: "books read per month",
+              icon: "month",
+              iconColor: "text-green-600",
+            },
+          ].map(({ value, label, icon, iconColor }) => (
+            <div key={label} className="flex items-center">
+              <Icon name={icon} className={clsx(iconColor, "mr-3")} size="md" />
+              <p className="font-semibold mr-1.5">{value}</p>
+              <p className="text-stone-600">{label}</p>
+            </div>
+          ))}
         </div>
-
-        <div className="md:border sm:p-3">
-          <p className="font-semibold text-4xl">{averageRating}</p>
-          <p className="text-stone-600">average rating</p>
-        </div>
-
-        <div className="md:border sm:p-3">
-          <p className="font-semibold text-4xl">{booksPerMonth}</p>
-          <p className="text-stone-600">books per month</p>
-        </div>
-      </div>
+      )}
 
       {booksByMonth?.map(({ month, books }) => (
         <div key={month} className="flex flex-col mt-8">

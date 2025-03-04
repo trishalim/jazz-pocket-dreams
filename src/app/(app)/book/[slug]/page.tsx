@@ -158,7 +158,7 @@ export default function Page({
   const readOnly = !(bookReview._owner.castAs(Group).myRole() === "admin");
 
   return (
-    <Container className="grid gap-12 py-8">
+    <Container className="grid gap-12 py-12">
       <div className="flex flex-col gap-6 sm:flex-row md:gap-10">
         <div className="w-[180px]">
           <BookCover bookReview={bookReview} readOnly={readOnly} />

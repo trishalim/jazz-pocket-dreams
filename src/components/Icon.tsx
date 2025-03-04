@@ -1,19 +1,25 @@
 import { clsx } from "clsx";
 import {
+  BookHeartIcon,
+  CalendarIcon,
   CheckIcon,
   CopyIcon,
   ImageIcon,
   type LucideIcon,
   ShareIcon,
+  StarIcon,
+  XIcon,
 } from "lucide-react";
-import { CloseIcon } from "next/dist/client/components/react-dev-overlay/internal/icons/CloseIcon";
 
 const icons = {
   check: CheckIcon,
   copy: CopyIcon,
   share: ShareIcon,
   image: ImageIcon,
-  close: CloseIcon,
+  close: XIcon,
+  book: BookHeartIcon,
+  month: CalendarIcon,
+  star: StarIcon,
 };
 
 // copied from tailwind line height https://tailwindcss.com/docs/font-size
@@ -35,8 +41,8 @@ const sizes = {
 
 const strokeWidths = {
   xs: 2.5,
-  sm: 2.5,
-  md: 1.5,
+  sm: 2,
+  md: 2,
   lg: 1.5,
   xl: 1.5,
   "2xl": 1.25,
