@@ -15,12 +15,23 @@ export function BookReviewThumbnail({ id }: { id: ID<BookReview> }) {
   if (!bookReview) return <></>;
 
   return (
-    <div className="inline-flex shrink-0 gap-4 rounded border p-4 sm:block sm:space-y-6 sm:border-0 sm:p-0 md:w-[200px]">
-      <Link href={`/book/${bookReview.id}`} className="sm:block sm:flex-1">
+    <div className="inline-flex shrink-0 sm:rounded sm:block sm:space-y-4 md:w-[200px]">
+      <Link
+        href={`/book/${bookReview.id}`}
+        className="relative sm:block sm:flex-1"
+      >
         <BookCoverReadOnly bookReview={bookReview} />
+
+        <span className="sr-only max-md:hidden">
+          {bookReview.title} by {bookReview.author}
+        </span>
+
+        {bookReview.rating === 5 && (
+          <StarIcon className="text-2xl text-yellow-400 top-1.5 right-1.5 absolute sm:hidden" />
+        )}
       </Link>
 
-      <div className="flex-1">
+      <div className="flex-1 hidden sm:block">
         <Link href={`/book/${bookReview.id}`}>
           <h2 className="mb-1 text-sm font-medium">{bookReview.title}</h2>
         </Link>

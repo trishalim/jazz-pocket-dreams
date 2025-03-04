@@ -201,7 +201,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
           {books.length == 0 ? (
             <p className="text-stone-600">No books read this month.</p>
           ) : (
-            <div className="grid gap-4 md:grid-cols-4">
+            <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-4">
               {books.map((bookReview) => (
                 <BookReviewThumbnail key={bookReview.id} id={bookReview.id} />
               ))}
