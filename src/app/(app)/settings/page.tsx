@@ -10,7 +10,7 @@ export default function Settings() {
   if (!me) return;
 
   return (
-    <Container className="py-8">
+    <Container className="py-12">
       <h1 className="font-serif text-lg font-medium sm:text-2xl mb-4">
         Settings
       </h1>

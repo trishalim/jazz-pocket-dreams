@@ -12,7 +12,7 @@ export default function Page({
   const { slug } = use(params);
 
   return (
-    <Container className="py-8">
+    <Container className="py-12">
       <UserProfile id={slug as ID<JazzAccount>} />
     </Container>
   );
