@@ -166,10 +166,7 @@ export default function Page({
     <Container className="grid gap-12 py-12">
       <div className="flex flex-col gap-6 sm:flex-row md:gap-10">
         {bookReview.cover && (
-          <Image
-            image={bookReview.cover}
-            className="rounded-l-sm rounded-r-xl w-[220px] shadow-xl w-auto"
-          />
+          <Image image={bookReview.cover} className="w-[200px] h-auto" />
         )}
 
         <div className="-mx-2 grid max-w-lg flex-1 gap-3 sm:mx-0">

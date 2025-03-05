@@ -33,11 +33,11 @@ const BookCoverContainer = ({
   );
 };
 
-export const MockCover = ({
+const MockCover = ({
   bookReview,
 }: { bookReview: BookReview | DraftBookReview }) => {
   return (
-    <div className="flex aspect-[3/4] h-full flex-col items-center justify-center gap-3 rounded-l-sm rounded-r-md bg-slate-100 px-3 text-center shadow-lg">
+    <div className="flex h-full flex-col items-center justify-center gap-3 rounded-l-sm rounded-r-md bg-slate-100 px-3 text-center shadow-lg">
       <p className="font-medium">{bookReview.title}</p>
       <p className="text-xs">{bookReview.author}</p>
     </div>

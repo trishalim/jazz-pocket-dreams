@@ -1,6 +1,5 @@
 "use client";
 
-import { MockCover } from "@/components/BookCover";
 import { Image } from "@/components/Image";
 import StarIcon from "@/components/icons/StarIcon";
 import { useCoState } from "jazz-react";
@@ -21,16 +20,11 @@ export function BookReviewThumbnail({ id }: { id: ID<BookReview> }) {
         href={`/book/${bookReview.id}`}
         className="relative flex-1 sm:flex sm:flex-col sm:justify-end sm:flex-1"
       >
-        {bookReview.cover ? (
+        {bookReview.cover && (
           <Image
             image={bookReview.cover}
             className="rounded-l-sm rounded-r-md h-[180px] shadow-md w-auto"
           />
-        ) : (
-          <div className="rounded-l-sm rounded-r-md h-[180px] w-[130px] shadow-md w-auto bg-slate-200 flex flex-col justify-center text-center">
-            <p>{bookReview.title}</p>
-            <p className="text-xs">{bookReview.author}</p>
-          </div>
         )}
 
         <span className="sr-only max-md:hidden">
