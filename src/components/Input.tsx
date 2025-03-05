@@ -23,7 +23,7 @@ export const Input = forwardRef<
     const inputClassName = clsx(
       "w-full rounded-md border px-3.5 py-2 shadow-sm",
       "font-medium text-slate-900",
-      "dark:text-white dark:bg-slate-925",
+      "dark:text-white dark:bg-slate-900",
     );
 
     const containerClassName = clsx("grid gap-1", className);

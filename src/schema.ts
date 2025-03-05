@@ -82,7 +82,9 @@ export class JazzAccount extends Account {
     }
 
     if (this.profile && !this.profile._refs.bookReviews) {
-      this.profile.bookReviews = ListOfBookReviews.create([]);
+      this.profile.bookReviews = ListOfBookReviews.create([], {
+        owner: this.profile._owner,
+      });
     }
   }
 }
