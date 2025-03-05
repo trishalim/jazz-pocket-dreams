@@ -3,7 +3,6 @@
 import { BookCover } from "@/components/BookCover";
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
-import { Image } from "@/components/Image";
 import Rating from "@/components/Rating";
 import RatingInput from "@/components/RatingInput";
 import { BookReview } from "@/schema";
@@ -165,9 +164,9 @@ export default function Page({
   return (
     <Container className="grid gap-12 py-12">
       <div className="flex flex-col gap-6 sm:flex-row md:gap-10">
-        {bookReview.cover && (
-          <Image image={bookReview.cover} className="w-[200px] h-auto" />
-        )}
+        <div className="w-[180px]">
+          <BookCover bookReview={bookReview} readOnly={readOnly} />
+        </div>
 
         <div className="-mx-2 grid max-w-lg flex-1 gap-3 sm:mx-0">
           <BookReviewTitle bookReview={bookReview} readOnly={readOnly} />

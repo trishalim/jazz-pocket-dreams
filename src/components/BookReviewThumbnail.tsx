@@ -1,6 +1,6 @@
 "use client";
 
-import { Image } from "@/components/Image";
+import { BookCover, BookCoverReadOnly } from "@/components/BookCover";
 import StarIcon from "@/components/icons/StarIcon";
 import { useCoState } from "jazz-react";
 import { ID } from "jazz-tools";
@@ -15,17 +15,12 @@ export function BookReviewThumbnail({ id }: { id: ID<BookReview> }) {
   if (!bookReview) return <></>;
 
   return (
-    <div className="inline-flex flex-col  shrink-0 sm:rounded sm:flex sm:space-y-4">
+    <div className="inline-flex shrink-0 sm:rounded sm:block sm:space-y-4 md:w-[200px]">
       <Link
         href={`/book/${bookReview.id}`}
-        className="relative flex-1 sm:flex sm:flex-col sm:justify-end sm:flex-1"
+        className="relative sm:block sm:flex-1"
       >
-        {bookReview.cover && (
-          <Image
-            image={bookReview.cover}
-            className="rounded-l-sm rounded-r-md h-[180px] shadow-md w-auto"
-          />
-        )}
+        <BookCoverReadOnly bookReview={bookReview} />
 
         <span className="sr-only max-md:hidden">
           {bookReview.title} by {bookReview.author}
@@ -36,7 +31,7 @@ export function BookReviewThumbnail({ id }: { id: ID<BookReview> }) {
         )}
       </Link>
 
-      <div className="hidden sm:block">
+      <div className="flex-1 hidden sm:block">
         <Link href={`/book/${bookReview.id}`}>
           <h2 className="mb-1 text-sm font-medium">{bookReview.title}</h2>
         </Link>
