@@ -37,6 +37,8 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
   >();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const canWrite = profile?._owner.castAs(Group).myRole() === "admin";
+
   const bookReviews = useCoState(
     ListOfBookReviews,
     user?.profile?._refs.bookReviews?.id,
@@ -154,29 +156,31 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
         </div>
       )}
 
-      <Dropdown>
-        <DropdownButton
-          as="button"
-          className="sm:hidden z-40 bg-white ring-1 ring-slate-950/10 shadow-lg rounded-full fixed bottom-6 right-6 p-2.5 dark:bg-slate-800"
-        >
-          <LogoShortIcon className="size-6 text-purple-600 dark:text-purple-400" />
-        </DropdownButton>
+      {canWrite && (
+        <Dropdown>
+          <DropdownButton
+            as="button"
+            className="sm:hidden z-40 bg-white ring-1 ring-slate-950/10 shadow-lg rounded-full fixed bottom-6 right-6 p-2.5 dark:bg-slate-800"
+          >
+            <LogoShortIcon className="size-6 text-purple-600 dark:text-purple-400" />
+          </DropdownButton>
 
-        <DropdownMenu anchor="bottom end">
-          <DropdownItem onClick={() => setShowShareProfileDialog(true)}>
-            Share profile
-          </DropdownItem>
-          <DropdownItem onClick={() => setShowAddBookDialog(true)}>
-            Add book
-          </DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
+          <DropdownMenu anchor="bottom end">
+            <DropdownItem onClick={() => setShowShareProfileDialog(true)}>
+              Share profile
+            </DropdownItem>
+            <DropdownItem onClick={() => setShowAddBookDialog(true)}>
+              Add book
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+      )}
 
       <div className="sm:flex items-center justify-between">
         <h1 className="font-serif text-2xl font-medium text-slate-900 sm:text-4xl dark:text-slate-200">
           {profile?.name}&apos;s book shelf
         </h1>
-        {profile?._owner.castAs(Group).myRole() === "admin" && (
+        {canWrite && (
           <div className="hidden sm:flex gap-2">
             <Button
               variant="secondary"

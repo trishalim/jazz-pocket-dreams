@@ -19,11 +19,13 @@ export function BookReviewForm({
         value={bookReview.title || ""}
         onChange={(e) => (bookReview.title = e.target.value)}
       />
+
       <Input
         label="Author"
         value={bookReview.author || ""}
         onChange={(e) => (bookReview.author = e.target.value)}
       />
+
       <Input
         type="date"
         label="Date read"
