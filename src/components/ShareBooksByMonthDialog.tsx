@@ -131,15 +131,10 @@ export function ShareBooksByMonthDialog(
                           className="max-h-full max-w-full rounded-l-sm rounded-r-md shadow-lg"
                           src={src}
                         />
-                        {book.rating === 5 && (
-                          <StarIcon className="text-yellow-400 absolute right-0.5 top-0.5" />
-                        )}
                       </div>
                     )}
                   </ProgressiveImg>
-                  {books.length <= 6 && (
-                    <Rating size="sm" rating={book.rating} />
-                  )}
+                  <Rating size="sm" rating={book.rating} />
                 </div>
               ))}
             </div>
