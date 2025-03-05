@@ -6,9 +6,17 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   className?: string;
   id?: string;
+  as?: "input" | "textarea";
+  rows?: number;
 }
-export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, className, id: customId, ...inputProps }, ref) => {
+export const Input = forwardRef<
+  HTMLInputElement | HTMLTextAreaElement,
+  InputProps
+>(
+  (
+    { label, className, id: customId, as = "input", rows = 3, ...inputProps },
+    ref,
+  ) => {
     const generatedId = useId();
     const id = customId || generatedId;
 
@@ -26,7 +34,22 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {label}
         </label>
 
-        <input ref={ref} {...inputProps} id={id} className={inputClassName} />
+        {as === "textarea" ? (
+          <textarea
+            ref={ref as React.Ref<HTMLTextAreaElement>}
+            {...(inputProps as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
+            id={id}
+            className={inputClassName}
+            rows={rows}
+          />
+        ) : (
+          <input
+            ref={ref as React.Ref<HTMLInputElement>}
+            {...inputProps}
+            id={id}
+            className={inputClassName}
+          />
+        )}
       </div>
     );
   },

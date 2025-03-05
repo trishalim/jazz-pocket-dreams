@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/Button";
 import PlusIcon from "@/components/icons/PlusIcon";
-import { BookReview } from "@/schema";
+import { BookReview, DraftBookReview } from "@/schema";
 import clsx from "clsx";
 import { createImage } from "jazz-browser-media-images";
 import { useAccount } from "jazz-react";
@@ -33,7 +33,9 @@ const BookCoverContainer = ({
   );
 };
 
-const MockCover = ({ bookReview }: { bookReview: BookReview }) => {
+const MockCover = ({
+  bookReview,
+}: { bookReview: BookReview | DraftBookReview }) => {
   return (
     <div className="flex h-full flex-col items-center justify-center gap-3 rounded-l-sm rounded-r-md bg-slate-100 px-3 text-center shadow-lg">
       <p className="font-medium">{bookReview.title}</p>
@@ -47,7 +49,7 @@ export function BookCoverReadOnly({
   className,
   size = "md",
 }: {
-  bookReview: BookReview;
+  bookReview: BookReview | DraftBookReview;
   className?: string;
   size?: "sm" | "md";
 }) {
@@ -73,7 +75,9 @@ export function BookCoverReadOnly({
   );
 }
 
-export function BookCoverInput({ bookReview }: { bookReview: BookReview }) {
+export function BookCoverInput({
+  bookReview,
+}: { bookReview: BookReview | DraftBookReview }) {
   const { me } = useAccount();
   const inputRef = useRef<HTMLInputElement>(null);
 
