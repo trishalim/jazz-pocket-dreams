@@ -6,6 +6,7 @@ import {
   DialogTitle,
 } from "@/components/Dialog";
 import { Errors } from "@/components/Errors";
+import { useToast } from "@/contexts/ToastContext";
 import { BookReview, DraftBookReview, ListOfBookReviews } from "@/schema";
 import { useAccount } from "jazz-react";
 import { useState } from "react";
@@ -17,6 +18,8 @@ export function AddBookDialog(props: Omit<DialogProps, "children">) {
       bookReviews: [],
     },
   });
+
+  const toast = useToast();
 
   const [errors, setErrors] = useState<string[]>([]);
 
@@ -42,6 +45,7 @@ export function AddBookDialog(props: Omit<DialogProps, "children">) {
     me.root.draft = DraftBookReview.create({
       dateRead: new Date(),
     });
+    toast.success("Added a new book to your shelf!");
     props.onClose(true);
   };
 

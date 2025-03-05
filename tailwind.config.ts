@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 const colors = require("tailwindcss/colors");
+import tailwindCSSAnimate from "tailwindcss-animate";
 import plugin from "tailwindcss/plugin";
 
 const config: Config = {
@@ -26,6 +27,7 @@ const config: Config = {
     },
   },
   plugins: [
+    tailwindCSSAnimate,
     plugin(({ addBase }) =>
       addBase({
         ":root": {

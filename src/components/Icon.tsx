@@ -13,6 +13,7 @@ import {
 
 const icons = {
   check: CheckIcon,
+
   copy: CopyIcon,
   share: ShareIcon,
   image: ImageIcon,

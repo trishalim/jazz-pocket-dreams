@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Auth } from "@/components/JazzAndAuth";
 import { Nav } from "@/components/Nav";
+import { ToastProvider } from "@/contexts/ToastContext";
 import clsx from "clsx";
 import { Fraunces } from "next/font/google";
 
@@ -38,10 +39,12 @@ export default function RootLayout({
     >
       <body className={clsx(inter.className, fraunces.variable)}>
         <Auth>
-          <header>
-            <Nav />
-          </header>
-          <main>{children}</main>
+          <ToastProvider>
+            <header>
+              <Nav />
+            </header>
+            <main>{children}</main>
+          </ToastProvider>
         </Auth>
       </body>
     </html>
