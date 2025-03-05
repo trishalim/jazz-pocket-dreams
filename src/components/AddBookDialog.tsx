@@ -24,7 +24,6 @@ export function AddBookDialog(props: Omit<DialogProps, "children">) {
   const [errors, setErrors] = useState<string[]>([]);
 
   const onSave = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log("save");
     e.preventDefault();
 
     if (!me?.root) return;

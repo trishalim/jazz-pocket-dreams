@@ -46,7 +46,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     <ToastContext.Provider value={value}>
       {children}
       <ToastPrimitive.Provider swipeDirection="right">
-        <ToastPrimitive.Viewport className="fixed bottom-5 right-5 z-50 m-6 flex flex-col gap-3 w-[390px]" />
+        <ToastPrimitive.Viewport className="fixed bottom-5 right-5 z-50 flex flex-col gap-3" />
         {data && <Toast {...data} open={open} onOpenChange={setOpen} />}
       </ToastPrimitive.Provider>
     </ToastContext.Provider>
