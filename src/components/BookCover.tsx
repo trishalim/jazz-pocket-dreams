@@ -37,9 +37,11 @@ const MockCover = ({
   bookReview,
 }: { bookReview: BookReview | DraftBookReview }) => {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-3 rounded-l-sm rounded-r-md bg-slate-100 px-3 text-center">
-      <p className="font-medium">{bookReview.title}</p>
-      <p className="text-xs">{bookReview.author}</p>
+    <div className="flex h-full flex-col items-center justify-center gap-3 rounded-l-sm rounded-r-md bg-slate-100 px-3 text-center dark:bg-slate-700">
+      <p className="font-medium text-slate-900 dark:text-white line-clamp-3">
+        {bookReview.title}
+      </p>
+      <p className="text-xs line-clamp-2">{bookReview.author}</p>
     </div>
   );
 };

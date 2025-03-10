@@ -116,24 +116,33 @@ export function ShareBooksByMonthDialog(
             <div className="flex flex-wrap justify-center gap-y-5">
               {books.map((book) => (
                 <div
-                  className={clsx("space-y-2", {
+                  className={clsx("space-y-2 flex flex-col", {
                     "w-1/2 px-3": [1, 2, 4].includes(books.length),
                     "w-1/3 px-3": [3, 5, 6].includes(books.length),
                     "w-1/4 px-1": books.length > 6,
                   })}
                   key={book.id}
                 >
-                  <ProgressiveImg image={book.cover} maxWidth={600}>
-                    {({ src }) => (
-                      <div className="relative">
-                        <img
-                          alt=""
-                          className="max-h-full max-w-full rounded-l-sm rounded-r-md shadow-lg"
-                          src={src}
-                        />
-                      </div>
-                    )}
-                  </ProgressiveImg>
+                  {book.cover ? (
+                    <ProgressiveImg image={book.cover} maxWidth={600}>
+                      {({ src }) => (
+                        <div className="relative">
+                          <img
+                            alt=""
+                            className="max-h-full max-w-full rounded-l-sm rounded-r-md"
+                            src={src}
+                          />
+                        </div>
+                      )}
+                    </ProgressiveImg>
+                  ) : (
+                    <div className="flex-1 flex items-center flex-col justify-center text-center max-w-full rounded-l-sm rounded-r-md bg-slate-100 dark:bg-slate-700">
+                      <p className="font-medium line-clamp-2 text-slate-900 dark:text-white">
+                        {book.title}
+                      </p>
+                      <p className="text-xs line-clamp-1 mt-2">{book.author}</p>
+                    </div>
+                  )}
                   <Rating size="sm" rating={book.rating} />
                 </div>
               ))}
