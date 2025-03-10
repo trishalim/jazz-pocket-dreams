@@ -1,6 +1,7 @@
 import { BookCoverInput } from "@/components/BookCover";
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
+import RatingInput from "@/components/RatingInput";
 import { BookReview, DraftBookReview } from "@/schema";
 
 export function BookReviewForm({
@@ -34,6 +35,12 @@ export function BookReviewForm({
           const date = new Date(e.target.value);
           bookReview.dateRead = date;
         }}
+      />
+
+      <RatingInput
+        label="Rating"
+        onChange={(rating) => (bookReview.rating = rating)}
+        value={bookReview.rating}
       />
 
       <Input
