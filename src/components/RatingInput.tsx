@@ -22,9 +22,9 @@ export default function RatingInput({
   };
 
   return (
-    <div className="grid gap-1">
+    <div className={clsx(className, "grid gap-1")}>
       <label className="text-slate-600 dark:text-slate-300">{label}</label>
-      <div className={clsx(className, "flex gap-0.5 text-3xl text-yellow-400")}>
+      <div className="flex gap-0.5 text-3xl text-yellow-400">
         {[...Array(5)].map((_, i) => {
           return i < value ? (
             <button

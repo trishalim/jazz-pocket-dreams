@@ -9,6 +9,7 @@ import {
   DropdownItem,
   DropdownMenu,
 } from "@/components/Dropdown";
+import { Heading } from "@/components/Heading";
 import { Icon } from "@/components/Icon";
 import { ShareBooksByMonthDialog } from "@/components/ShareBooksByMonthDialog";
 import { ShareProfileDialog } from "@/components/ShareProfileDialog";
@@ -179,9 +180,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
       )}
 
       <div className="sm:flex items-center justify-between">
-        <h1 className="font-serif text-2xl font-medium text-slate-900 sm:text-4xl dark:text-slate-200">
-          {profile?.name}&apos;s book shelf
-        </h1>
+        <Heading>{profile?.name}&apos;s book shelf</Heading>
         {canWrite && (
           <div className="hidden sm:flex gap-2">
             <Button

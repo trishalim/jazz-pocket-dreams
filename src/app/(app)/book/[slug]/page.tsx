@@ -144,7 +144,8 @@ const BookReviewRating = ({
 
   return (
     <RatingInput
-      className={clsx(className, "p-2")}
+      label="Rating"
+      className={clsx(className, "p-2 label:sr-only")}
       onChange={(rating) => (bookReview.rating = rating)}
       value={bookReview.rating}
     />

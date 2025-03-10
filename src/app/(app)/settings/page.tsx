@@ -1,6 +1,7 @@
 "use client";
 
 import { Container } from "@/components/Container";
+import { Heading } from "@/components/Heading";
 import { Input } from "@/components/Input";
 import { useAccount } from "jazz-react";
 
@@ -11,9 +12,7 @@ export default function Settings() {
 
   return (
     <Container className="py-12">
-      <h1 className="font-serif text-lg font-medium sm:text-2xl mb-4">
-        Settings
-      </h1>
+      <Heading className="mb-4">Settings</Heading>
 
       <div className="max-w-lg">
         <Input

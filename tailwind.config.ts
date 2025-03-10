@@ -28,6 +28,7 @@ const config: Config = {
   },
   plugins: [
     tailwindCSSAnimate,
+    plugin(({ addVariant }) => addVariant("label", "& :is(label)")),
     plugin(({ addBase }) =>
       addBase({
         ":root": {
