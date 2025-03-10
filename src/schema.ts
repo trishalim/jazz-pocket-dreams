@@ -13,7 +13,7 @@ export class BookReview extends CoMap {
   rating = co.number;
   dateRead = co.Date;
   review = co.optional.string;
-  cover? = co.ref(ImageDefinition, { optional: true });
+  cover = co.ref(ImageDefinition, { optional: true });
   deleted = co.optional.boolean;
 }
 
