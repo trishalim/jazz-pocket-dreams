@@ -101,6 +101,8 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
       (book) => book.rating,
     );
 
+    if (!booksWithRating.length) return;
+
     return (
       Math.round(
         (booksWithRating.reduce((sum, book) => sum + book.rating, 0) /
@@ -258,15 +260,22 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
               icon: "month",
               iconColor: "text-green-600",
             },
-          ].map(({ value, label, icon, iconColor }) => (
-            <div key={label} className="flex items-center">
-              <Icon name={icon} className={clsx(iconColor, "mr-3")} size="md" />
-              <p className="font-semibold mr-1.5 text-slate-900 dark:text-slate-200">
-                {value}
-              </p>
-              <p>{label}</p>
-            </div>
-          ))}
+          ].map(
+            ({ value, label, icon, iconColor }) =>
+              value && (
+                <div key={label} className="flex items-center">
+                  <Icon
+                    name={icon}
+                    className={clsx(iconColor, "mr-3")}
+                    size="md"
+                  />
+                  <p className="font-semibold mr-1.5 text-slate-900 dark:text-slate-200">
+                    {value}
+                  </p>
+                  <p>{label}</p>
+                </div>
+              ),
+          )}
         </div>
       )}
 
