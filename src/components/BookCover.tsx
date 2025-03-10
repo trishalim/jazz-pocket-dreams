@@ -37,7 +37,7 @@ const MockCover = ({
   bookReview,
 }: { bookReview: BookReview | DraftBookReview }) => {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-3 rounded-l-sm rounded-r-md bg-slate-100 px-3 text-center shadow-lg">
+    <div className="flex h-full flex-col items-center justify-center gap-3 rounded-l-sm rounded-r-md bg-slate-100 px-3 text-center">
       <p className="font-medium">{bookReview.title}</p>
       <p className="text-xs">{bookReview.author}</p>
     </div>
@@ -59,7 +59,7 @@ export function BookCoverReadOnly({
         <ProgressiveImg image={bookReview.cover}>
           {({ src }) => (
             <img
-              className="max-h-full max-w-full rounded-l-sm rounded-r-md shadow-lg"
+              className="max-h-full max-w-full rounded-l-sm rounded-r-md"
               src={src}
             />
           )}
@@ -123,7 +123,7 @@ export function BookCoverInput({
   }
 
   return (
-    <BookCoverContainer className="flex w-[180px] flex-col justify-center rounded-l-sm rounded-r-md bg-slate-100 p-3 shadow-lg">
+    <BookCoverContainer className="flex w-[180px] flex-col justify-center rounded-l-sm rounded-r-md bg-slate-100 p-3">
       <button
         className="flex h-full w-full flex-col items-center justify-center gap-3 text-slate-500 transition-colors hover:text-slate-600"
         type="button"
