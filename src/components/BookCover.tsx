@@ -37,7 +37,7 @@ const MockCover = ({
   bookReview,
 }: { bookReview: BookReview | DraftBookReview }) => {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-3 rounded-l-sm rounded-r-md bg-slate-100 px-3 text-center dark:bg-slate-700">
+    <div className="flex h-full flex-col items-center justify-center gap-3 rounded-l-sm rounded-r-md bg-slate-100 px-3 text-center dark:bg-slate-800">
       <p className="font-medium text-slate-900 dark:text-white line-clamp-3">
         {bookReview.title}
       </p>
@@ -61,6 +61,7 @@ export function BookCoverReadOnly({
         <ProgressiveImg image={bookReview.cover}>
           {({ src }) => (
             <img
+              alt=""
               className="max-h-full max-w-full rounded-l-sm rounded-r-md"
               src={src}
             />
@@ -105,33 +106,32 @@ export function BookCoverInput({
 
   if (bookReview.cover) {
     return (
-      <div className="group relative inline-block">
+      <div>
         <BookCoverReadOnly
           className="transition-opacity group-hover:opacity-40"
           bookReview={bookReview}
         />
-        <div className="absolute left-0 top-0 hidden h-full w-full items-center justify-center rounded-l-sm rounded-r-md group-hover:flex">
-          <Button
-            variant="tertiary"
-            type="button"
-            className="shadow"
-            onClick={remove}
-          >
-            Remove
-          </Button>
-        </div>
+        <Button
+          variant="secondary"
+          type="button"
+          className="mt-2 mx-auto"
+          size="sm"
+          onClick={remove}
+        >
+          Remove
+        </Button>
       </div>
     );
   }
 
   return (
-    <BookCoverContainer className="flex w-[180px] flex-col justify-center rounded-l-sm rounded-r-md bg-slate-100 p-3">
+    <BookCoverContainer className="flex w-[180px] flex-col justify-center rounded-l-sm rounded-r-md bg-slate-100 dark:bg-slate-800 border border-dashed border-slate-300 hover:border-slate-400  dark:border-slate-600 dark:hover:border-slate-500">
       <button
-        className="flex h-full w-full flex-col items-center justify-center gap-3 text-slate-500 transition-colors hover:text-slate-600"
+        className="flex h-full w-full flex-col items-center justify-center gap-3 text-sm text-slate-600 dark:text-slate-400 transition-colors hover:text-slate-600 dark:hover:text-slate-100"
         type="button"
         onClick={onUploadClick}
       >
-        <PlusIcon className="h-10 w-10" />
+        <PlusIcon className="size-6" />
         Upload book cover
       </button>
       <label className="sr-only">

@@ -12,7 +12,7 @@ export function BookReviewForm({
   onSave?: (e: React.FormEvent<HTMLFormElement>) => void;
 }) {
   return (
-    <form onSubmit={onSave} className="grid gap-5">
+    <form onSubmit={onSave} className="space-y-5">
       <BookCoverInput bookReview={bookReview} />
 
       <Input

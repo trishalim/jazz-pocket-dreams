@@ -136,7 +136,7 @@ export function ShareBooksByMonthDialog(
                       )}
                     </ProgressiveImg>
                   ) : (
-                    <div className="flex-1 flex items-center flex-col justify-center text-center max-w-full rounded-l-sm rounded-r-md bg-slate-100 dark:bg-slate-700">
+                    <div className="flex-1 flex items-center flex-col justify-center text-center max-w-full rounded-l-sm rounded-r-md bg-slate-100 dark:bg-slate-800">
                       <p className="font-medium line-clamp-2 text-slate-900 dark:text-white">
                         {book.title}
                       </p>
