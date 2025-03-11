@@ -1,5 +1,6 @@
 import { BookCoverInput } from "@/components/BookCover";
 import { Button } from "@/components/Button";
+import { DialogActions } from "@/components/Dialog";
 import { Input } from "@/components/Input";
 import RatingInput from "@/components/RatingInput";
 import { BookReview, DraftBookReview } from "@/schema";
@@ -52,9 +53,11 @@ export function BookReviewForm({
       />
 
       {onSave && (
-        <Button type="submit" variant="primary">
-          Save
-        </Button>
+        <DialogActions>
+          <Button type="submit" variant="primary">
+            Save
+          </Button>
+        </DialogActions>
       )}
     </form>
   );
