@@ -15,6 +15,9 @@ import { ProgressiveImg, useAccount } from "jazz-react";
 import { useState } from "react";
 
 export default function ShareButton() {
+  const isShareSupported =
+    typeof navigator.share === "function" &&
+    /CriOS/.test(navigator.userAgent) === false;
   const handleShare = async () => {
     const element = document.getElementById("shareImage");
     if (!element) return;
@@ -23,7 +26,7 @@ export default function ShareButton() {
       html2canvas(element).then((canvas) => {
         const dataUrl = canvas.toDataURL("image/png");
 
-        if (navigator.share) {
+        if (isShareSupported) {
           // Convert dataUrl to a file
           fetch(dataUrl)
             .then((res) => res.blob())
@@ -63,7 +66,7 @@ export default function ShareButton() {
 
   return (
     <div className="flex gap-2">
-      {typeof navigator.share === "function" && (
+      {isShareSupported && (
         <Button
           size="sm"
           className="lg:hidden"
