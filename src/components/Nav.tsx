@@ -6,11 +6,15 @@ import LogoIcon from "@/components/icons/LogoIcon";
 import { useClerk } from "@clerk/clerk-react";
 import { useAccount, useIsAuthenticated } from "jazz-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function Nav() {
   const { me, logOut } = useAccount();
   const isAuthenticated = useIsAuthenticated();
   const { redirectToSignIn } = useClerk();
+  const pathname = usePathname();
+
+  if (pathname === "/" && !isAuthenticated) return;
 
   return (
     <nav className="border-b py-3">
