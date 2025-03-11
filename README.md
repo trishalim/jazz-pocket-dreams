@@ -41,6 +41,6 @@ I directly mutate local state, and any changes are synced to the cloud. No API c
 pnpm i  && pnpm dev
 ```
 
-## feature requests
+## ➕ feature requests
 
 Please open an issue or PR, or [DM me](https://x.com/trishathecookie).
