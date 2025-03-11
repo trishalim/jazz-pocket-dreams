@@ -3,7 +3,7 @@ import LogoIcon from "@/components/icons/LogoIcon";
 import { useClerk } from "@clerk/clerk-react";
 
 export default function LandingPage() {
-  const { redirectToSignUp } = useClerk();
+  const { redirectToSignUp, redirectToSignIn } = useClerk();
   return (
     <div className="bg-purple-950">
       <div className="bg-[url('/images/stars.svg')]">
@@ -25,8 +25,19 @@ export default function LandingPage() {
               onClick={() => redirectToSignUp()}
               size="lg"
             >
-              Start tracking
+              Create an account
             </Button>
+
+            <p className="text-purple-100/60 text-sm">
+              Already have an account?{" "}
+              <button
+                onClick={() => redirectToSignIn()}
+                type="button"
+                className="text-purple-100 font-medium"
+              >
+                Log in
+              </button>
+            </p>
           </div>
         </div>
       </div>
