@@ -18,7 +18,7 @@ A minimalistic web app for tracking books you read
 - [Jazz](https://jazz.tools) for database, backend, and state management
 
 With **[Jazz](https://jazz.tools)**, my backend is simply the [schema](./src/schema.ts) that
-defines the data model, and the api key for [Jazz Cloud](https://jazz.tools/cloud) written [here](.src/components/JazzAndAuth.tsx).
+defines the data model, and the api key for [Jazz Cloud](https://jazz.tools/cloud) written [here](./src/components/JazzAndAuth.tsx).
 
 To work with data, I start by retrieving a reactive state from Jazz.
 
