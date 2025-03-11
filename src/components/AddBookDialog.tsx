@@ -53,7 +53,7 @@ export function AddBookDialog(props: Omit<DialogProps, "children">) {
     props.onClose(true);
   };
 
-  if (!me?.root.draft) return;
+  if (!me?.root?.draft) return;
 
   return (
     <Dialog {...props}>
