@@ -26,7 +26,7 @@ To work with data, I start by retrieving a reactive state from Jazz.
 const bookReview = useCoState(BookReview, id);
 ```
 
-I directly mutate local state, and any changes are synced it to the cloud. No API calls necessary.
+I directly mutate local state, and any changes are synced to the cloud. No API calls necessary.
 
 ```tsx
 <input
