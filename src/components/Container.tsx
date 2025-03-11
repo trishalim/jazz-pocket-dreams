@@ -14,7 +14,7 @@ export function Container({
       className={clsx(
         "mx-auto px-4",
         {
-          "sm:max-w-xl": size === "sm",
+          "sm:max-w-2xl": size === "sm",
           "max-w-4xl": size === "md",
         },
         className,
