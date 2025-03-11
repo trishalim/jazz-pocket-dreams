@@ -61,27 +61,43 @@ export default function Page({
 
   return (
     <Container size="sm" className="grid gap-12 py-12">
+      {bookReview?.deleted && (
+        <div>
+          <p className="mb-3">This review has been deleted.</p>
+          <Button variant="secondary" onClick={restoreBookReview}>
+            Restore
+          </Button>
+        </div>
+      )}
+
       <BookReviewForm bookReview={bookReview} />
 
-      <div className="mt-5 space-y-2">
-        {bookReview?.deleted && <p>This review has been deleted.</p>}
+      {!bookReview.deleted && (
+        <div className="mt-5">
+          <Button
+            onClick={() => setIsDeleteDialogOpen(true)}
+            variant="destructive"
+          >
+            Delete
+          </Button>
+        </div>
+      )}
 
-        {!readOnly &&
-          (bookReview?.deleted ? (
-            <>
-              <Button variant="secondary" onClick={restoreBookReview}>
-                Restore
-              </Button>{" "}
-            </>
-          ) : (
-            <Button
-              onClick={() => setIsDeleteDialogOpen(true)}
-              variant="destructive"
-            >
-              Delete
-            </Button>
-          ))}
-      </div>
+      {/*{!readOnly &&*/}
+      {/*  (bookReview?.deleted ? (*/}
+      {/*    <>*/}
+      {/*      <Button variant="secondary" onClick={restoreBookReview}>*/}
+      {/*        Restore*/}
+      {/*      </Button>{" "}*/}
+      {/*    </>*/}
+      {/*  ) : (*/}
+      {/*    <Button*/}
+      {/*      onClick={() => setIsDeleteDialogOpen(true)}*/}
+      {/*      variant="destructive"*/}
+      {/*    >*/}
+      {/*      Delete*/}
+      {/*    </Button>*/}
+      {/*  ))}*/}
 
       <ConfirmationDialog
         onClose={() => setIsDeleteDialogOpen(false)}
