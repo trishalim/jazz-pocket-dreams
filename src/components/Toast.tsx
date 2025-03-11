@@ -41,7 +41,7 @@ export function Toast({
       className={clsx(
         // Container
         "rounded-lg py-2 px-3 bg-white shadow-lg ring-1 ring-slate-950/10 dark:ring-inset dark:ring-white/10",
-        "bg-white/75 backdrop-blur-xl dark:bg-slate-900",
+        "bg-white/75 backdrop-blur-xl dark:bg-slate-800",
         // Children
         "flex items-start",
         // Sizing and positioning
