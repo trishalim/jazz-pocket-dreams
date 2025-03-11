@@ -2,14 +2,17 @@
 
 import { BookCover } from "@/components/BookCover";
 import { Button } from "@/components/Button";
+import { ConfirmationDialog } from "@/components/ConfirmationDialog";
 import { Container } from "@/components/Container";
+import { DialogDescription, DialogTitle } from "@/components/Dialog";
 import Rating from "@/components/Rating";
 import RatingInput from "@/components/RatingInput";
+import { useToast } from "@/contexts/ToastContext";
 import { BookReview } from "@/schema";
 import clsx from "clsx";
 import { useCoState } from "jazz-react";
 import { Group, ID } from "jazz-tools";
-import { use } from "react";
+import { use, useState } from "react";
 
 const BookReviewTitle = ({
   bookReview,
@@ -157,10 +160,23 @@ export default function Page({
 }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const bookReview = useCoState(BookReview, slug as ID<BookReview>);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const toast = useToast();
 
   if (!bookReview) return <></>;
 
   const readOnly = !(bookReview._owner.castAs(Group).myRole() === "admin");
+
+  const deleteBookReview = () => {
+    bookReview.deleted = true;
+    setIsDeleteDialogOpen(false);
+    toast.success("Book review deleted.");
+  };
+
+  const restoreBookReview = () => {
+    bookReview.deleted = false;
+    toast.success("Book review restored.");
+  };
 
   return (
     <Container className="grid gap-12 py-12">
@@ -182,16 +198,13 @@ export default function Page({
             {!readOnly &&
               (bookReview?.deleted ? (
                 <>
-                  <Button
-                    variant="secondary"
-                    onClick={() => (bookReview.deleted = false)}
-                  >
+                  <Button variant="secondary" onClick={restoreBookReview}>
                     Restore
                   </Button>{" "}
                 </>
               ) : (
                 <Button
-                  onClick={() => (bookReview.deleted = true)}
+                  onClick={() => setIsDeleteDialogOpen(true)}
                   variant="secondary"
                 >
                   Delete
@@ -200,6 +213,18 @@ export default function Page({
           </div>
         </div>
       </div>
+
+      <ConfirmationDialog
+        onClose={() => setIsDeleteDialogOpen(false)}
+        confirmLabel="Delete review"
+        onConfirm={deleteBookReview}
+        open={isDeleteDialogOpen}
+      >
+        <DialogTitle>Delete review</DialogTitle>
+        <DialogDescription>
+          Are you sure you want to delete this review?
+        </DialogDescription>
+      </ConfirmationDialog>
     </Container>
   );
 }

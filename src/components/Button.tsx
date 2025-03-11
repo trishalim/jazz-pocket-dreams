@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { ComponentProps } from "react";
 
 interface Props {
-  variant?: "primary" | "secondary" | "tertiary";
+  variant?: "primary" | "secondary" | "tertiary" | "destructive";
   className?: string;
   size?: "sm" | "md" | "lg";
 }
@@ -14,7 +14,7 @@ interface AnchorProps
   href: string;
 }
 
-type ButtonProps = ComponentProps<"button"> & Props;
+export type ButtonProps = ComponentProps<"button"> & Props;
 
 export function Button(props: AnchorProps | ButtonProps) {
   const {
@@ -31,6 +31,7 @@ export function Button(props: AnchorProps | ButtonProps) {
     secondary:
       "rounded-full border font-medium text-slate-600 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-slate-800 dark:border-slate-700",
     tertiary: "rounded-full bg-white text-purple-950 font-medium",
+    destructive: "rounded-full bg-red-600 text-white font-medium",
   };
 
   const sizeClassNames = {
