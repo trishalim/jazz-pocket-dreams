@@ -8,7 +8,7 @@
   }
 
   :focus-visible {
-    @apply ring-2 ring-purple-600/75 dark:ring-2 dark:ring-white/75;
+    @apply ring-2 ring-purple-600/75 dark:ring-purple-300/75;
   }
 
   .text-gradient {
