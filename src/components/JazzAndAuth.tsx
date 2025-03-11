@@ -15,7 +15,7 @@ function JazzAndAuth({ children }: { children: ReactNode }) {
   return (
     <JazzProviderWithClerk
       clerk={clerk}
-      sync={{ peer: "wss://cloud.jazz.tools/?key=dashboard@garden.co" }}
+      sync={{ peer: "wss://cloud.jazz.tools/?key=hello@trishalim.com" }}
       AccountSchema={JazzAccount}
     >
       {children}

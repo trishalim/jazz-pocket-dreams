@@ -1,41 +1,45 @@
-# Book shelf example with Jazz and Next.js
+# 🌙 pocket dreams
 
-This is an example of a book shelf where you can add and review books.
-It shows you how to create and edit data, upload images, and share data publicly.
+A minimalistic web app for tracking books you read
 
-Live version: https://books-demo.jazz.tools
+[See live](https://pocketdreams.me)
 
-## Installing & running the example locally
+## 🎁 features
 
-(This requires `pnpm` to be installed, see [https://pnpm.io/installation](https://pnpm.io/installation))
+- See your reading history at a glance in a monthly and yearly view
+- Share your profile through a link
+- View reading stats for the year
 
-Start by downloading the [jazz repository](https://github.com/garden-co/jazz):
-```bash
-npx degit gardencmp/jazz jazz
+
+##  🎷 tech stack
+
+- React and Tailwind for UI
+- [Jazz](https://jazz.tools) for database, backend, auth, and state management
+
+With **[Jazz](https://jazz.tools)**, my backend is simply the [schema](./src/schema.ts) that
+defines the data model, and the api key for [Jazz Cloud](https://jazz.tools/cloud) written [here](.src/components/JazzAndAuth.tsx).
+
+To work with data, I start by retrieving a reactive state from Jazz.
+
+```tsx
+const bookReview = useCoState(BookReview, id);
 ```
 
-Go to the book-shelf example directory:
-```bash
-cd jazz/examples/book-shelf
+I directly mutate local state, and any changes are synced it to the cloud. No API calls necessary.
+
+```tsx
+<input
+  value={bookReview.title}
+  onChange={(e) => (bookReview.title = e.target.value)}
+/>
 ```
 
-Install and build dependencies:
+## 👩‍💻  installing and running the app
+
 ```bash
-pnpm i && npx turbo build
+pnpm i  && pnpm dev
 ```
 
-Start the dev server:
-```bash
-pnpm dev
-```
+## feature requests
 
-## Questions / problems / feedback
-
-If you have feedback, let us know on [Discord](https://discord.gg/utDMjHYg42) or open an issue or PR to fix something that seems wrong.
-
-
-## Configuration: sync server
-
-By default, the example app uses [Jazz Cloud](https://jazz.tools/cloud) (`wss://cloud.jazz.tools`) - so cross-device use, invites and collaboration should just work.
-
-You can also run a local sync server by running `npx jazz-run sync` and adding the query param `?sync=ws://localhost:4200` to the URL of the example app (for example: `http://localhost:5173/?peer=ws://localhost:4200`), or by setting the `sync` parameter of the `<Jazz.Provider>` provider component in [./src/components/JazzAndAuth.tsx](./src/components/JazzAndAuth.tsx).
+Please open an issue or PR, or [DM me](https://x.com/trishathecookie).
