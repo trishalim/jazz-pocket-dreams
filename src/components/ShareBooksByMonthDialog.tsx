@@ -50,6 +50,7 @@ export default function ShareButton() {
       });
     } catch (error) {
       console.error("Error sharing:", error);
+      await handleDownload();
     }
   };
 
