@@ -3,14 +3,14 @@
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import LogoIcon from "@/components/icons/LogoIcon";
+import { useClerk } from "@clerk/clerk-react";
 import { useAccount, useIsAuthenticated } from "jazz-react";
 import Link from "next/link";
 
 export function Nav() {
   const { me, logOut } = useAccount();
   const isAuthenticated = useIsAuthenticated();
-
-  if (!isAuthenticated) return;
+  const { redirectToSignIn } = useClerk();
 
   return (
     <nav className="border-b py-3">
@@ -20,10 +20,22 @@ export function Nav() {
           <span className="sr-only">Home</span>
         </Link>
         <div className="flex items-center gap-4 text-sm">
-          <Link href="/settings">{me?.profile?.name}</Link>
-          <Button variant="secondary" onClick={logOut} size="sm">
-            Log out
-          </Button>
+          {isAuthenticated ? (
+            <>
+              <Link href="/settings">{me?.profile?.name}</Link>
+              <Button variant="secondary" onClick={logOut} size="sm">
+                Log out
+              </Button>
+            </>
+          ) : (
+            <Button
+              variant="secondary"
+              onClick={() => redirectToSignIn()}
+              size="sm"
+            >
+              Log in
+            </Button>
+          )}
         </div>
       </Container>
     </nav>
