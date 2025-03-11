@@ -14,7 +14,8 @@ A minimalistic web app for tracking books you read
 ##  🎷 tech stack
 
 - React and Tailwind for UI
-- [Jazz](https://jazz.tools) for database, backend, auth, and state management
+- Clerk for authentication
+- [Jazz](https://jazz.tools) for database, backend, and state management
 
 With **[Jazz](https://jazz.tools)**, my backend is simply the [schema](./src/schema.ts) that
 defines the data model, and the api key for [Jazz Cloud](https://jazz.tools/cloud) written [here](.src/components/JazzAndAuth.tsx).
