@@ -8,7 +8,7 @@ export function Heading({
     <h1
       className={clsx(
         className,
-        "font-serif text-2xl font-medium text-slate-900 sm:text-4xl dark:text-slate-200",
+        "font-serif text-2xl font-medium text-slate-900 sm:text-4xl dark:text-white",
       )}
     >
       {children}
