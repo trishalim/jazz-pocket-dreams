@@ -293,7 +293,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
                 </span>
               </h2>
 
-              {!!books.length && (
+              {!!books.length && canWrite && (
                 <Button
                   size="sm"
                   variant="secondary"
