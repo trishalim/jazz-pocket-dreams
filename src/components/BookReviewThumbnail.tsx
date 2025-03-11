@@ -16,7 +16,7 @@ export function BookReviewThumbnail({ id }: { id: ID<BookReview> }) {
     <div className="inline-flex shrink-0 sm:rounded sm:block sm:space-y-4 md:w-[200px]">
       <Link
         href={`/book/${bookReview.id}`}
-        className="relative sm:block sm:flex-1"
+        className="relative block flex-1 aspect-[3/2]"
       >
         <BookCoverReadOnly bookReview={bookReview} />
 

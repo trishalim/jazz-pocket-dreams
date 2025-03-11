@@ -118,7 +118,7 @@ export function ShareBooksByMonthDialog(
                 <div
                   className={clsx("space-y-2 flex flex-col", {
                     "w-1/2 px-3": [1, 2, 4].includes(books.length),
-                    "w-1/3 px-3": [3, 5, 6].includes(books.length),
+                    "w-1/3 px-1.5": [3, 5, 6].includes(books.length),
                     "w-1/4 px-1": books.length > 6,
                   })}
                   key={book.id}
@@ -137,7 +137,7 @@ export function ShareBooksByMonthDialog(
                     </ProgressiveImg>
                   ) : (
                     <div className="flex-1 flex items-center flex-col justify-center text-center max-w-full rounded-l-sm rounded-r-md bg-slate-100 dark:bg-slate-800">
-                      <p className="font-medium line-clamp-2 text-slate-900 dark:text-white">
+                      <p className="font-medium text-sm line-clamp-2 text-slate-900 dark:text-white">
                         {book.title}
                       </p>
                       <p className="text-xs line-clamp-1 mt-2">{book.author}</p>
