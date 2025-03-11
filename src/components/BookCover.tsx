@@ -22,11 +22,9 @@ const BookCoverContainer = ({
     <div
       className={clsx(
         {
-          "h-[230px] lg:h-[260px] max-w-[160px] lg:max-w-[200px]":
-            size === "md",
+          "h-[240px] lg:h-[260px]": size === "md",
           "h-[180px]": size === "sm",
         },
-        "relative",
         className,
       )}
     >
@@ -64,7 +62,7 @@ export function BookCoverReadOnly({
           {({ src }) => (
             <img
               alt=""
-              className="object-contain object-bottom rounded-l-sm rounded-r-md"
+              className="max-h-full max-w-full rounded-l-sm rounded-r-md"
               src={src}
             />
           )}
