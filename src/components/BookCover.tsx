@@ -125,7 +125,7 @@ export function BookCoverInput({
   }
 
   return (
-    <BookCoverContainer className="flex w-[180px] flex-col justify-center rounded-l-sm rounded-r-md bg-slate-100 dark:bg-slate-800 border border-dashed border-slate-300 hover:border-slate-400  dark:border-slate-600 dark:hover:border-slate-500">
+    <BookCoverContainer className="flex w-[180px] flex-col justify-center rounded-l-sm rounded-r-md bg-slate-50 dark:bg-slate-800 border border-dashed border-slate-300 hover:border-slate-400  dark:border-slate-600 dark:hover:border-slate-500">
       <button
         className="flex h-full w-full flex-col items-center justify-center gap-3 text-sm text-slate-600 dark:text-slate-400 transition-colors hover:text-slate-600 dark:hover:text-slate-100"
         type="button"

@@ -1,3 +1,4 @@
+import { Icon } from "@/components/Icon";
 import * as Headless from "@headlessui/react";
 import clsx from "clsx";
 import type React from "react";
@@ -60,13 +61,26 @@ export function DialogTitle({
   "as" | "className"
 >) {
   return (
-    <Headless.DialogTitle
-      {...props}
-      className={clsx(
-        className,
-        "text-balance text-lg/6 font-semibold text-slate-900 dark:text-white",
-      )}
-    />
+    <div className="flex items-center justify-between gap-2">
+      <Headless.DialogTitle
+        {...props}
+        className={clsx(
+          className,
+          "text-balance text-lg/6 font-semibold text-slate-900 dark:text-white",
+        )}
+      />
+
+      <Headless.CloseButton>
+        <Icon
+          name="close"
+          className={clsx(
+            "text-slate-400 hover:text-slate-500 dark:text-slate-600",
+          )}
+        />
+
+        <span className="sr-only">Close</span>
+      </Headless.CloseButton>
+    </div>
   );
 }
 
