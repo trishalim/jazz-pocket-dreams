@@ -8,7 +8,6 @@ import {
   DialogTitle,
 } from "@/components/Dialog";
 import Rating from "@/components/Rating";
-import StarIcon from "@/components/icons/StarIcon";
 import { BookReview } from "@/schema";
 import clsx from "clsx";
 import html2canvas from "html2canvas";
@@ -16,16 +15,6 @@ import { ProgressiveImg, useAccount } from "jazz-react";
 import { useState } from "react";
 
 export default function ShareButton() {
-  const [isShareSupported, setIsShareSupported] = useState(() => {
-    return "share" in navigator;
-  });
-  // Check if device is mobile based on user agent
-  const userAgent =
-    navigator.userAgent || navigator.vendor || (window as any).opera;
-  const mobileRegex =
-    /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
-  const isMobile = mobileRegex.test(userAgent.toLowerCase());
-
   const handleShare = async () => {
     const element = document.getElementById("shareImage");
     if (!element) return;
@@ -34,7 +23,7 @@ export default function ShareButton() {
       html2canvas(element).then((canvas) => {
         const dataUrl = canvas.toDataURL("image/png");
 
-        if (navigator.share && isShareSupported) {
+        if (navigator.share) {
           // Convert dataUrl to a file
           fetch(dataUrl)
             .then((res) => res.blob())
@@ -74,8 +63,13 @@ export default function ShareButton() {
 
   return (
     <div className="flex gap-2">
-      {isMobile && isShareSupported && (
-        <Button size="sm" variant="secondary" onClick={handleShare}>
+      {typeof navigator.share === "function" && (
+        <Button
+          size="sm"
+          className="lg:hidden"
+          variant="secondary"
+          onClick={handleShare}
+        >
           Share
         </Button>
       )}
