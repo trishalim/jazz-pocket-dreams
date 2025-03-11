@@ -1,5 +1,6 @@
 "use client";
 
+import { BackToProfileButton } from "@/components/BackToProfileButton";
 import { BookReviewDetails } from "@/components/BookReviewDetails";
 import { BookReviewForm } from "@/components/BookReviewForm";
 import { Button } from "@/components/Button";
@@ -38,6 +39,9 @@ export default function Page({
 
   return (
     <Container size="sm" className="flex min-h-screen flex-col gap-12 py-12">
+      <BackToProfileButton
+        accountId={bookReview._owner.castAs(Group).members[0].id}
+      />
       {readOnly ? (
         <>
           <BookReviewDetails bookReview={bookReview} />

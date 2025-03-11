@@ -12,12 +12,10 @@ import { BookReview } from "@/schema";
 import clsx from "clsx";
 import html2canvas from "html2canvas";
 import { ProgressiveImg, useAccount } from "jazz-react";
-import { useState } from "react";
 
 export default function ShareButton() {
   const isShareSupported =
-    typeof navigator.share === "function" &&
-    /CriOS/.test(navigator.userAgent) === false;
+    typeof navigator.share === "function" && !/CriOS/.test(navigator.userAgent);
   const handleShare = async () => {
     const element = document.getElementById("shareImage");
     if (!element) return;

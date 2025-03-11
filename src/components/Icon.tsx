@@ -3,6 +3,7 @@ import {
   BookHeartIcon,
   CalendarIcon,
   CheckIcon,
+  ChevronLeftIcon,
   CopyIcon,
   ImageIcon,
   type LucideIcon,
@@ -13,7 +14,7 @@ import {
 
 const icons = {
   check: CheckIcon,
-
+  chevronLeft: ChevronLeftIcon,
   copy: CopyIcon,
   share: ShareIcon,
   image: ImageIcon,
