@@ -1,36 +1,17 @@
 "use client";
 
-import { BookCoverReadOnly } from "@/components/BookCover";
+import { BookReviewDetails } from "@/components/BookReviewDetails";
 import { BookReviewForm } from "@/components/BookReviewForm";
 import { Button } from "@/components/Button";
 import { ConfirmationDialog } from "@/components/ConfirmationDialog";
 import { Container } from "@/components/Container";
 import { DialogDescription, DialogTitle } from "@/components/Dialog";
-import { Heading } from "@/components/Heading";
 import { Promo } from "@/components/Promo";
-import Rating from "@/components/Rating";
 import { useToast } from "@/contexts/ToastContext";
-import { BookReview, JazzAccount } from "@/schema";
+import { BookReview } from "@/schema";
 import { useCoState } from "jazz-react";
 import { Group, ID } from "jazz-tools";
 import { use, useState } from "react";
-
-export function BookReviewReadOnly({ bookReview }: { bookReview: BookReview }) {
-  return (
-    <div className="flex-1">
-      <BookCoverReadOnly className="mb-8" bookReview={bookReview} />
-
-      <Heading className="mb-2">{bookReview.title}</Heading>
-      <p className="mb-6">by {bookReview.author}</p>
-
-      <Rating size="lg" className="mb-6" rating={bookReview.rating} />
-
-      {bookReview.review && (
-        <p className="leading-relaxed">{bookReview.review}</p>
-      )}
-    </div>
-  );
-}
 
 export default function Page({
   params,
@@ -59,7 +40,7 @@ export default function Page({
     <Container size="sm" className="flex min-h-screen flex-col gap-12 py-12">
       {readOnly ? (
         <>
-          <BookReviewReadOnly bookReview={bookReview} />
+          <BookReviewDetails bookReview={bookReview} />
           <Promo />
         </>
       ) : (
