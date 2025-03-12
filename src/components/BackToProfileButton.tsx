@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function BackToProfileButton({ accountId }: { accountId: string }) {
   const user = useCoState(JazzAccount, accountId as ID<JazzAccount>, {
-    profile: {},
+    resolve: { profile: true },
   });
 
   if (!user?.profile) return null;
