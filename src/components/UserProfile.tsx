@@ -27,8 +27,10 @@ import { Group, ID } from "jazz-tools";
 import { useMemo, useState } from "react";
 
 export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
-  const user = useCoState(JazzAccount, id);
-  const profile = useCoState(JazzProfile, user?.profile?.id);
+  const user = useCoState(JazzAccount, id, {
+    profile: {}
+  });
+  const profile = user?.profile;
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [showShareProfileDialog, setShowShareProfileDialog] = useState(false);
   const [showShareBooksByMonthDialog, setShowShareBooksByMonthDialog] =
@@ -43,7 +45,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
 
   const bookReviews = useCoState(
     ListOfBookReviews,
-    user?.profile?._refs.bookReviews?.id,
+    profile?._refs.bookReviews?.id,
     [{}],
   );
 

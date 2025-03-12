@@ -9,8 +9,6 @@ export function BackToProfileButton({ accountId }: { accountId: string }) {
     profile: {},
   });
 
-  console.log(user?.profile);
-
   if (!user?.profile) return null;
 
   return (
