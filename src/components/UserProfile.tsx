@@ -28,7 +28,9 @@ import { useMemo, useState } from "react";
 
 export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
   const user = useCoState(JazzAccount, id, {
-    profile: {}
+    resolve: {
+      profile: true
+    }
   });
   const profile = user?.profile;
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
@@ -46,7 +48,9 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
   const bookReviews = useCoState(
     ListOfBookReviews,
     profile?._refs.bookReviews?.id,
-    [{}],
+    {
+      resolve: { $each: true }
+    },
   );
 
   const booksByYear = useMemo(() => {

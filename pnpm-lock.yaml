@@ -27,17 +27,17 @@ importers:
         specifier: ^1.4.1
         version: 1.4.1
       jazz-browser-media-images:
-        specifier: ^0.10.12
-        version: 0.10.12
+        specifier: https://pkg.pr.new/garden-co/jazz/jazz-browser-media-images@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+        version: https://pkg.pr.new/garden-co/jazz/jazz-browser-media-images@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
       jazz-react:
-        specifier: ^0.10.12
-        version: 0.10.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: https://pkg.pr.new/garden-co/jazz/jazz-react@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+        version: https://pkg.pr.new/garden-co/jazz/jazz-react@3a4d111a3724c5fbc0c2e6d15a24c238544898fa(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       jazz-react-auth-clerk:
-        specifier: ^0.10.12
-        version: 0.10.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: https://pkg.pr.new/garden-co/jazz/jazz-react-auth-clerk@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+        version: https://pkg.pr.new/garden-co/jazz/jazz-react-auth-clerk@3a4d111a3724c5fbc0c2e6d15a24c238544898fa(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       jazz-tools:
-        specifier: ^0.10.12
-        version: 0.10.12
+        specifier: https://pkg.pr.new/garden-co/jazz/jazz-tools@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+        version: https://pkg.pr.new/garden-co/jazz/jazz-tools@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
       lucide-react:
         specifier: ^0.474.0
         version: 0.474.0(react@18.3.1)
@@ -699,17 +699,21 @@ packages:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
     engines: {node: '>=6'}
 
-  cojson-storage-indexeddb@0.10.8:
-    resolution: {integrity: sha512-gOzrUoErAALQ7uDcBmRyIxeX6ZPEP44xlsfIqYty2KEO1O4hb12CQG+2CvSqDA/MX/3yETpy07ZRXDPay+9sNA==}
+  cojson-storage-indexeddb@https://pkg.pr.new/garden-co/jazz/cojson-storage-indexeddb@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
+    resolution: {tarball: https://pkg.pr.new/garden-co/jazz/cojson-storage-indexeddb@3a4d111a3724c5fbc0c2e6d15a24c238544898fa}
+    version: 0.11.0
 
-  cojson-storage@0.10.8:
-    resolution: {integrity: sha512-y/JhP7x0G6PS3M9mi1CpLFsLE8eotpQ61dFB2zQulLPuhOqEg5SV/JgYv49rzgIzQBBVTdt4Tv7+hoNsoHVk5Q==}
+  cojson-storage@https://pkg.pr.new/garden-co/jazz/cojson-storage@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
+    resolution: {tarball: https://pkg.pr.new/garden-co/jazz/cojson-storage@3a4d111a3724c5fbc0c2e6d15a24c238544898fa}
+    version: 0.11.0
 
-  cojson-transport-ws@0.10.8:
-    resolution: {integrity: sha512-YDfYv3VvhZGOR9fB+kBJ4b3Mq0rnS2YUilFaY673iL29CxUlLoB1cJ9Ch59RDICAXvYm0weXhC4JT7NsAhAvNw==}
+  cojson-transport-ws@https://pkg.pr.new/garden-co/jazz/cojson-transport-ws@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
+    resolution: {tarball: https://pkg.pr.new/garden-co/jazz/cojson-transport-ws@3a4d111a3724c5fbc0c2e6d15a24c238544898fa}
+    version: 0.11.0
 
-  cojson@0.10.8:
-    resolution: {integrity: sha512-HUszXPjTcfUch+/ZJ+oFDUH2BGzj+KDiYVEeI/vYKvYBIa/vsyvYoF9ThSGm19vX6dh9zCHyFVd+cx0ps6oEKQ==}
+  cojson@https://pkg.pr.new/garden-co/jazz/cojson@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
+    resolution: {tarball: https://pkg.pr.new/garden-co/jazz/cojson@3a4d111a3724c5fbc0c2e6d15a24c238544898fa}
+    version: 0.11.0
 
   color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
@@ -858,37 +862,44 @@ packages:
   jackspeak@3.4.3:
     resolution: {integrity: sha512-OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==}
 
-  jazz-auth-clerk@0.10.12:
-    resolution: {integrity: sha512-XqazkCcIUQ1jP5XZ7/PtUc3Vjrrj84ddOpDNdrlcGisn5eFwkyFYYwx6Me3i8CmIt3LEFQ8EFYlw6vtzvzpCyg==}
+  jazz-auth-clerk@https://pkg.pr.new/garden-co/jazz/jazz-auth-clerk@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
+    resolution: {tarball: https://pkg.pr.new/garden-co/jazz/jazz-auth-clerk@3a4d111a3724c5fbc0c2e6d15a24c238544898fa}
+    version: 0.11.0
 
-  jazz-browser-media-images@0.10.12:
-    resolution: {integrity: sha512-VocjkdE2OF6NnzClFJPcEHU4ItKf4Lhhd/wofxfv+7sMi4RgEYsbCFzwDQz9OsHHe6EUMwFj/79LyRvkr4HBhA==}
+  jazz-browser-media-images@https://pkg.pr.new/garden-co/jazz/jazz-browser-media-images@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
+    resolution: {tarball: https://pkg.pr.new/garden-co/jazz/jazz-browser-media-images@3a4d111a3724c5fbc0c2e6d15a24c238544898fa}
+    version: 0.11.0
 
-  jazz-browser@0.10.12:
-    resolution: {integrity: sha512-pvdrXbCyD/sJgRFXiVIlTZghQtk1E7XegljmACwWKPXYd9kGrmgfls29Cl5iiaaR7JVEcg5mKpJsqbHoo6vytQ==}
+  jazz-browser@https://pkg.pr.new/garden-co/jazz/jazz-browser@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
+    resolution: {tarball: https://pkg.pr.new/garden-co/jazz/jazz-browser@3a4d111a3724c5fbc0c2e6d15a24c238544898fa}
+    version: 0.11.0
 
   jazz-crypto-rs@0.0.6:
     resolution: {integrity: sha512-+hJM9hPzMjK7Jk9++sUs5mKXlFiCTMDZ2wjO8WsfNpY7RZ+kiYSwkCrKvvvDRHSXPlzoyFQFxrSrXqN0/Fr6Yw==}
 
-  jazz-react-auth-clerk@0.10.12:
-    resolution: {integrity: sha512-9sU+zwqvr0l3+JKxU0KKogJemH5i6Mp5xm1wEtaS6ELyGtiP4Lj6bEUAZLoR6Qf2U70XEIrtzo5n8LBa8Q2RgA==}
+  jazz-react-auth-clerk@https://pkg.pr.new/garden-co/jazz/jazz-react-auth-clerk@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
+    resolution: {tarball: https://pkg.pr.new/garden-co/jazz/jazz-react-auth-clerk@3a4d111a3724c5fbc0c2e6d15a24c238544898fa}
+    version: 0.11.1
     peerDependencies:
       react: ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  jazz-react-core@0.10.9:
-    resolution: {integrity: sha512-EPYAzsUcxAg8RKjKKyTUFTwcdNpSYCgTJKt/1X/E2vAEmUJs6oTDj4diS3t+FtHvsdrb7uI8fb++NNMlOheI7w==}
-    peerDependencies:
-      react: ^17.0.0 || ^18.0.0 || ^19.0.0
-      react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
-
-  jazz-react@0.10.12:
-    resolution: {integrity: sha512-6H94JEEzuE9oGL7XMC+2fLKYjJr4N/0+bEFKWmcrB3kurRvF6/VH8QMBCksD8jXW7SugaVwG0au6S27VG6p/LA==}
+  jazz-react-core@https://pkg.pr.new/garden-co/jazz/jazz-react-core@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
+    resolution: {tarball: https://pkg.pr.new/garden-co/jazz/jazz-react-core@3a4d111a3724c5fbc0c2e6d15a24c238544898fa}
+    version: 0.11.1
     peerDependencies:
       react: ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  jazz-tools@0.10.12:
-    resolution: {integrity: sha512-OjK6VhPqF+iQbqi7MqFKqlWqfQuCymKUy9Vp8IPpFC4mEcHjR/9XuD4o/n6dFkmTdOhBVOTvJDpCj054bFJ9dA==}
+  jazz-react@https://pkg.pr.new/garden-co/jazz/jazz-react@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
+    resolution: {tarball: https://pkg.pr.new/garden-co/jazz/jazz-react@3a4d111a3724c5fbc0c2e6d15a24c238544898fa}
+    version: 0.11.1
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  jazz-tools@https://pkg.pr.new/garden-co/jazz/jazz-tools@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
+    resolution: {tarball: https://pkg.pr.new/garden-co/jazz/jazz-tools@3a4d111a3724c5fbc0c2e6d15a24c238544898fa}
+    version: 0.11.0
 
   jiti@1.21.7:
     resolution: {integrity: sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==}
@@ -1786,21 +1797,21 @@ snapshots:
 
   clsx@2.1.1: {}
 
-  cojson-storage-indexeddb@0.10.8:
+  cojson-storage-indexeddb@https://pkg.pr.new/garden-co/jazz/cojson-storage-indexeddb@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
     dependencies:
-      cojson: 0.10.8
-      cojson-storage: 0.10.8
+      cojson: https://pkg.pr.new/garden-co/jazz/cojson@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+      cojson-storage: https://pkg.pr.new/garden-co/jazz/cojson-storage@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
 
-  cojson-storage@0.10.8:
+  cojson-storage@https://pkg.pr.new/garden-co/jazz/cojson-storage@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
     dependencies:
-      cojson: 0.10.8
+      cojson: https://pkg.pr.new/garden-co/jazz/cojson@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
 
-  cojson-transport-ws@0.10.8:
+  cojson-transport-ws@https://pkg.pr.new/garden-co/jazz/cojson-transport-ws@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
     dependencies:
-      cojson: 0.10.8
+      cojson: https://pkg.pr.new/garden-co/jazz/cojson@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
       typescript: 5.6.3
 
-  cojson@0.10.8:
+  cojson@https://pkg.pr.new/garden-co/jazz/cojson@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
     dependencies:
       '@noble/ciphers': 0.1.4
       '@noble/curves': 1.8.1
@@ -1953,62 +1964,62 @@ snapshots:
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
 
-  jazz-auth-clerk@0.10.12:
+  jazz-auth-clerk@https://pkg.pr.new/garden-co/jazz/jazz-auth-clerk@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
     dependencies:
-      cojson: 0.10.8
-      jazz-browser: 0.10.12
-      jazz-tools: 0.10.12
+      cojson: https://pkg.pr.new/garden-co/jazz/cojson@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+      jazz-browser: https://pkg.pr.new/garden-co/jazz/jazz-browser@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+      jazz-tools: https://pkg.pr.new/garden-co/jazz/jazz-tools@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
 
-  jazz-browser-media-images@0.10.12:
+  jazz-browser-media-images@https://pkg.pr.new/garden-co/jazz/jazz-browser-media-images@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
     dependencies:
       '@types/image-blob-reduce': 4.1.4
       image-blob-reduce: 4.1.0
-      jazz-browser: 0.10.12
-      jazz-tools: 0.10.12
+      jazz-browser: https://pkg.pr.new/garden-co/jazz/jazz-browser@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+      jazz-tools: https://pkg.pr.new/garden-co/jazz/jazz-tools@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
       pica: 9.0.1
       typescript: 5.6.3
 
-  jazz-browser@0.10.12:
+  jazz-browser@https://pkg.pr.new/garden-co/jazz/jazz-browser@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
     dependencies:
-      cojson: 0.10.8
-      cojson-storage-indexeddb: 0.10.8
-      cojson-transport-ws: 0.10.8
-      jazz-tools: 0.10.12
+      cojson: https://pkg.pr.new/garden-co/jazz/cojson@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+      cojson-storage-indexeddb: https://pkg.pr.new/garden-co/jazz/cojson-storage-indexeddb@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+      cojson-transport-ws: https://pkg.pr.new/garden-co/jazz/cojson-transport-ws@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+      jazz-tools: https://pkg.pr.new/garden-co/jazz/jazz-tools@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
 
   jazz-crypto-rs@0.0.6: {}
 
-  jazz-react-auth-clerk@0.10.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  jazz-react-auth-clerk@https://pkg.pr.new/garden-co/jazz/jazz-react-auth-clerk@3a4d111a3724c5fbc0c2e6d15a24c238544898fa(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      cojson: 0.10.8
-      jazz-auth-clerk: 0.10.12
-      jazz-browser: 0.10.12
-      jazz-react: 0.10.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      jazz-tools: 0.10.12
+      cojson: https://pkg.pr.new/garden-co/jazz/cojson@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+      jazz-auth-clerk: https://pkg.pr.new/garden-co/jazz/jazz-auth-clerk@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+      jazz-browser: https://pkg.pr.new/garden-co/jazz/jazz-browser@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+      jazz-react: https://pkg.pr.new/garden-co/jazz/jazz-react@3a4d111a3724c5fbc0c2e6d15a24c238544898fa(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      jazz-tools: https://pkg.pr.new/garden-co/jazz/jazz-tools@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
       react: 18.3.1
     transitivePeerDependencies:
       - react-dom
 
-  jazz-react-core@0.10.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  jazz-react-core@https://pkg.pr.new/garden-co/jazz/jazz-react-core@3a4d111a3724c5fbc0c2e6d15a24c238544898fa(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      cojson: 0.10.8
-      jazz-tools: 0.10.12
+      cojson: https://pkg.pr.new/garden-co/jazz/cojson@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+      jazz-tools: https://pkg.pr.new/garden-co/jazz/jazz-tools@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  jazz-react@0.10.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  jazz-react@https://pkg.pr.new/garden-co/jazz/jazz-react@3a4d111a3724c5fbc0c2e6d15a24c238544898fa(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@scure/bip39': 1.5.4
-      cojson: 0.10.8
-      jazz-browser: 0.10.12
-      jazz-react-core: 0.10.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      jazz-tools: 0.10.12
+      cojson: https://pkg.pr.new/garden-co/jazz/cojson@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+      jazz-browser: https://pkg.pr.new/garden-co/jazz/jazz-browser@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
+      jazz-react-core: https://pkg.pr.new/garden-co/jazz/jazz-react-core@3a4d111a3724c5fbc0c2e6d15a24c238544898fa(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      jazz-tools: https://pkg.pr.new/garden-co/jazz/jazz-tools@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  jazz-tools@0.10.12:
+  jazz-tools@https://pkg.pr.new/garden-co/jazz/jazz-tools@3a4d111a3724c5fbc0c2e6d15a24c238544898fa:
     dependencies:
       '@scure/bip39': 1.5.4
-      cojson: 0.10.8
+      cojson: https://pkg.pr.new/garden-co/jazz/cojson@3a4d111a3724c5fbc0c2e6d15a24c238544898fa
 
   jiti@1.21.7: {}
 
