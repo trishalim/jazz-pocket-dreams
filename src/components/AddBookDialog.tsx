@@ -9,6 +9,7 @@ import { Errors } from "@/components/Errors";
 import { useToast } from "@/contexts/ToastContext";
 import { BookReview, DraftBookReview, ListOfBookReviews } from "@/schema";
 import { useAccount } from "jazz-react";
+import { Group } from "jazz-tools";
 import { useState } from "react";
 
 export function AddBookDialog(props: Omit<DialogProps, "children">) {
@@ -38,7 +39,10 @@ export function AddBookDialog(props: Omit<DialogProps, "children">) {
       me.profile.bookReviews = ListOfBookReviews.create([], me.profile._owner);
     }
 
-    me.profile.bookReviews.push(me.root.draft as BookReview);
+    const newBookReview = me.root.draft as BookReview;
+    newBookReview._owner.castAs(Group).addMember("everyone", "reader");
+    me.profile.bookReviews.push(newBookReview);
+
     me.root.draft = DraftBookReview.create(
       {
         dateRead: new Date(),

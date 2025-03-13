@@ -2,6 +2,7 @@ import {
   Account,
   CoList,
   CoMap,
+  Group,
   ImageDefinition,
   Profile,
   co,
@@ -74,10 +75,14 @@ export class JazzAccount extends Account {
    */
   migrate(this: JazzAccount) {
     if (!this._refs.root) {
+      const group = Group.create({ owner: this });
       this.root = JazzAccountRoot.create({
-        draft: DraftBookReview.create({
-          dateRead: new Date(),
-        }),
+        draft: DraftBookReview.create(
+          {
+            dateRead: new Date(),
+          },
+          group,
+        ),
       });
     }
 
