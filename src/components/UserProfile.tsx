@@ -44,10 +44,13 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   console.log('colist id', profile?.bookReviews?.id);
+  console.log('book titles', user?.profile?.bookReviews?.map((book) => book.title));
 
   console.log('colist members', profile?.bookReviews?._owner?.castAs(Group).members);
 
   console.log('members of each book', user?.profile?.bookReviews?.map((book) => book._owner.castAs(Group).members));
+
+
 
   const canWrite = profile?._owner.castAs(Group).myRole() === "admin";
 
