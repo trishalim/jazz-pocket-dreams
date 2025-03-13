@@ -35,9 +35,7 @@ export function AddBookDialog(props: Omit<DialogProps, "children">) {
     }
 
     if (!me.profile.bookReviews) {
-      me.profile.bookReviews = ListOfBookReviews.create([], {
-        owner: me.profile._owner,
-      });
+      me.profile.bookReviews = ListOfBookReviews.create([], me.profile._owner);
     }
 
     me.profile.bookReviews.push(me.root.draft as BookReview);
@@ -45,9 +43,7 @@ export function AddBookDialog(props: Omit<DialogProps, "children">) {
       {
         dateRead: new Date(),
       },
-      {
-        owner: me.profile._owner,
-      },
+      me.profile._owner,
     );
     toast.success("Added a new book to your shelf!");
     props.onClose(true);
