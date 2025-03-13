@@ -28,7 +28,9 @@ import { useMemo, useState } from "react";
 
 export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
   const user = useCoState(JazzAccount, id, {
-    profile: {}
+    profile: {
+      bookReviews: [{}],
+    },
   });
   const profile = user?.profile;
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
@@ -43,16 +45,10 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
 
   const canWrite = profile?._owner.castAs(Group).myRole() === "admin";
 
-  const bookReviews = useCoState(
-    ListOfBookReviews,
-    profile?._refs.bookReviews?.id,
-    [{}],
-  );
-
   const booksByYear = useMemo(() => {
     const byYear: Array<{ year: number; books: BookReview[] }> = [];
 
-    bookReviews?.getAll().forEach((bookReview) => {
+    user?.profile?.bookReviews?.getAll().forEach((bookReview) => {
       const year = bookReview.dateRead.getFullYear();
       if (!byYear.find((y) => y.year === year)) {
         byYear.push({ year, books: [] });
@@ -61,7 +57,7 @@ export default function UserProfile({ id }: { id: ID<JazzAccount> }) {
     });
 
     return byYear;
-  }, [bookReviews]);
+  }, [user?.profile?.bookReviews]);
 
   const booksBySelectedYear = useMemo(() => {
     return booksByYear?.find(({ year }) => year === selectedYear);
